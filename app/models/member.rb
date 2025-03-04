@@ -11,6 +11,6 @@ class Member < ApplicationRecord
 
   has_one_attached :profile_image
 
-  enum gender: { Unspecified: 0, Female: 1, Male: 2 }
+  enum gender: { unspecified: 0, female: 1, male: 2 }
 
 end

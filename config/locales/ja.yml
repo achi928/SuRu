@@ -1,0 +1,7 @@
+  ja:
+    enums:
+      member:
+        gender:
+          unspecified: "未設定"
+          female: "女性"
+          male: "男性"
