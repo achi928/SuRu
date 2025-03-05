@@ -15,7 +15,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.datetime :remember_created_at
 
       t.string :nickname, null: false
-      t.integer :birth_year, null: false
+      t.integer :birth_year, null: true
       t.integer :gender, null: false, default: 0
       t.boolean :is_active, null: false, default: true
 

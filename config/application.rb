@@ -12,6 +12,7 @@ module Portfolio
     config.load_defaults 6.1
     
     config.i18n.default_locale = :ja
+    config.active_model.i18n_customize_full_message = true
 
     # Configuration for the application, engines, and railties goes here.
     #

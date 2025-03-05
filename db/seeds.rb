@@ -6,20 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # Members
-beauty_lover = Member.find_or_create_by(email: 'beauty_lover@example.com') do |member|
+beauty_lover = Member.find_or_create_by(email: 'beauty@example.com') do |member|
   member.nickname = 'BeautyLoverA'
   member.birth_year = 1995
   member.gender = 1  # Female
   member.is_active = true
-  member.password = 'password'
+  member.password = '123456'
 end
 
-health_fan = Member.find_or_create_by(email: 'health_fan@example.com') do |member|
+health_fan = Member.find_or_create_by(email: 'health@example.com') do |member|
   member.nickname = 'HealthFanB'
   member.birth_year = 1990
   member.gender = 2  # Male
   member.is_active = true
-  member.password = 'password'
+  member.password = '222222'
 end
 
 # Categories

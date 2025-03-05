@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'categories/:id/groups', to: 'categories#groups'
 
     resources :members, only: [:show]
-    get 'mypage', to: 'members#show'
+    get 'mypage', to: 'members#mypage'
     get 'profile/edit', to: 'members#edit'
     patch 'profile', to: 'members#update'
     get 'unsubscribe', to: 'members#unsubscribe'

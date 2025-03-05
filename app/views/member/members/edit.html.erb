@@ -1,0 +1,38 @@
+
+<%= flash[:alert] %>
+
+<h1>プロフィール編集</h1>
+
+<%= form_with model: @member, url: profile_path, method: :patch do |f| %>
+
+  <%= f.label :profile_image, 'プロフィール画像' %>
+  <%= f.file_field :profile_image, accept: "image/*" %><br>
+
+  <%= f.label :nickname, 'ニックネーム' %>
+  <%= f.text_field :nickname %><br>
+
+  <%= f.label :birth_year, '生まれ年' %>
+  <%= f.number_field :birth_year %><br>
+
+  <%= f.label :gender, "性別" %> 
+  <% gender_option.each do |key, value| %>
+    <%= f.radio_button :gender, key %>
+    <%= label_tag "member_gender_#{key}", value %>
+  <% end %><br>
+  
+
+  <%= f.label :email, 'メールアドレス' %>
+  <%= f.email_field :email %><br>
+
+  <%= f.label :password, "新しいパスワード（6桁の数字）" %>
+  <%= f.password_field :password %><br>
+
+  <%= f.label :password_confirmation, "パスワード確認" %>
+  <%= f.password_field :password_confirmation %><br>
+
+  <%= f.submit "更新する" %>
+
+<% end %>
+
+  
+
