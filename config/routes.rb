@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       registrations: 'member/registrations',
       sessions: 'member/sessions'
     }
-    root 'homes#top'
+    root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     resources :calendars, only: [:index]
     resources :memberships, only: [:create, :destroy]
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     root to: 'homes#top'
+    patch 'withdraw', to: 'members#withdraw'
     get 'members/search', to: 'members#search'
     resources :members, only: [:show, :update] do
       resources :comments, only: [:index, :destroy]

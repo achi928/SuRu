@@ -13,6 +13,7 @@ ja:
           attributes:
             email:
               blank: "メールアドレスを入力してください"
+              taken: "このメールアドレスはすでに使用されています"
             password:
               blank: "パスワードを入力してください"
             nickname:
@@ -22,3 +23,13 @@ ja:
   errors:
     messages:
       not_saved: "保存に失敗しました。入力内容を確認してください。"
+
+  devise:
+    failure:
+      member:
+        invalid: "メールアドレスまたはパスワードが違います。"
+
+    registrations:
+      signed_up: "登録が完了しました。ようこそSuRuへ！"
+      member:
+        signed_up: "登録が完了しました。ようこそSuRuへ！"

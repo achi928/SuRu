@@ -27,6 +27,10 @@ class Member::MembersController < ApplicationController
   end
 
   def withdraw
+    @member.update(is_active: false)
+    reset_session
+    flash[:notice] = "いつでも戻ってきてね、またね〜"
+    redirect_to root_path
   end
 
   private

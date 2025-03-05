@@ -16,12 +16,16 @@ class Member < ApplicationRecord
 
   validates :nickname, presence: true, length: { in: 1..20 }
 
-  def get_profile_image(width, height)
-    if profile_image.attached?
-      profile_image.variant(resize_to_limit: [width, height]).processed
-    else
-      ActionController::Base.helpers.asset_path('default.png')
-    end
+  def active_for_authentication?
+    super && (is_active == true)
+  end
+  
+  def get_profile_image
+  unless profile_image.attached?
+    file_path = Rails.root.join('app/assets/images/default.png')
+    profile_image.attach(io: File.open(file_path), filename: 'default-image.png')
+  end
+    profile_image.variant(resize_to_limit: [300, 200]).processed
   end
   
   def age_group

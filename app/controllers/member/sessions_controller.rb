@@ -2,6 +2,7 @@
 
 class Member::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_inactive_member, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -33,4 +34,22 @@ class Member::SessionsController < Devise::SessionsController
     root_path
   end
   
+  private
+
+  def reject_inactive_member      
+    member = Member.find_by(email: params[:member][:email])
+    # メールアドレスに対応する会員がいない場合
+    unless member
+      return
+    end
+    # パスワードが一致しない場合
+    unless member.valid_password?(params[:member][:password])
+      return
+    end
+    # 退会済み
+    unless member.is_active
+      flash[:danger] = 'お客様は退会済みです。'
+      redirect_to new_member_session_path
+    end
+  end
 end
