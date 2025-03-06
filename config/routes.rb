@@ -14,15 +14,18 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     resources :calendars, only: [:index]
-    resources :memberships, only: [:create, :destroy]
+    get 'groups/search', to: 'groups#search'
 
-    resources :group_posts, only: [:new, :create, :show, :index, :edit, :update] do
-      resources :likes, only: [:create]
-      resources :comments, only: [:create, :index, :edit, :update]
+    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :group_posts, only: [:new, :create, :show, :index, :edit, :update]
+      resources :memberships, only: [:create, :destroy]
     end
-    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy]
-    get 'groups_search', to: 'groups#search'
-
+    
+    resources :group_posts, only: [] do
+      resources :comments, only: [:create, :index, :edit, :update]
+      resources :likes, only: [:create]
+    end
+    
     resources :categories, only: [:index]
     get 'categories/:id/groups', to: 'categories#groups'
 
