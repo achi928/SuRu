@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
   scope module: :member do
-    devise_for :members, skip: :password, controllers: {
-      registrations: 'member/registrations',
-      sessions: 'member/sessions'
-    }
+    devise_for :members, skip: [:password, :registrations, :sessions]
+  
+    devise_scope :member do
+      get '/members/sign_up', to: 'registrations#new', as: :new_member_registration
+      post '/members', to: 'registrations#create', as: :member_registration
+      get '/members/sign_in', to: 'sessions#new', as: :new_member_session
+      post '/members/sign_in', to: 'sessions#create', as: :member_session
+      delete '/members/sign_out', to: 'sessions#destroy', as: :destroy_member_session
+    end  
+  
     root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     resources :calendars, only: [:index]
@@ -35,7 +41,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     patch 'withdraw', to: 'members#withdraw'
     get 'members/search', to: 'members#search'
-    resources :members, only: [:show, :update] do
+    resources :members, only: [:index, :show, :update] do
       resources :comments, only: [:index, :destroy]
     end
     resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]
