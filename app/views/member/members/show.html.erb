@@ -1,0 +1,19 @@
+<h1>グループメンバー情報</h1>
+
+<%= image_tag @member.get_profile_image(100,100) %>
+<table class = "index-table">
+  <tbody>
+    <tr>
+      <th>ニックネーム</th>
+      <th><%= @member.nickname %></th>
+    </tr>
+    <tr>
+      <th>性別</th>
+      <th><%= @member.gender_i18n %></th>
+    </tr>
+    <tr>
+      <th>年代</th>
+      <th><%= @member.age_group %></th>
+    </tr>
+  </tbody>
+</table>

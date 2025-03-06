@@ -1,0 +1,40 @@
+ja:
+  enums:
+    member:
+      gender:
+        unspecified: '未設定'
+        female: '女性'
+        male: '男性'
+
+  activerecord:
+    errors:
+      models:
+        member:
+          attributes:
+            email:
+              blank: 'メールアドレスを入力してください'
+              taken: 'このメールアドレスはすでに使用されています'
+            password:
+              blank: 'パスワードを入力してください'
+            nickname:
+              blank: 'ニックネームを入力してください'
+              too_short: 'ニックネームは%{count}文字以上で入力してください'
+
+  errors:
+    messages:
+      not_saved: '保存に失敗しました。入力内容を確認してください。'
+
+  devise:
+    failure:
+      member:
+        invalid: 'メールアドレスまたはパスワードが違います。'
+
+    registrations:
+      signed_up: '登録が完了しました。ようこそSuRuへ！'
+      member:
+        signed_up: '登録が完了しました。ようこそSuRuへ！'
+
+    sessions:
+      member:
+        signed_in: 'ログインしました'
+        signed_out: 'ログアウトしました'
