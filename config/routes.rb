@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
     
     resources :categories, only: [:index]
-    get 'categories/:id/groups', to: 'categories#groups'
+    get 'categories/:id/groups', to: 'categories#groups', as: "category_groups"
 
     resources :members, only: [:show]
     get 'mypage', to: 'members#mypage'

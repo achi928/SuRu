@@ -1,0 +1,15 @@
+<div class = 'container mt-4'>
+  <h3 class = 'fw-bold border-bottom pb-2 mb-4 text-center'>
+    <%= @category.name %>グループ
+  </h3>
+
+  <div class = 'row justify-content-center'>
+    <% @category.groups.each do |group| %>
+      <div class = 'col-6 col-md-4 mb-4 col-lg-3 text-center'>
+        <%= link_to 'グループの詳細リンク・画像も貼りたい', group_path(group), class: 'd-block' %>
+        <%= group.name %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

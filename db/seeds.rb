@@ -11,7 +11,7 @@ beauty_lover = Member.find_or_create_by(email: 'beauty@example.com') do |member|
   member.birth_year = 1995
   member.gender = 1  # Female
   member.is_active = true
-  member.password = ''
+  member.password = '111111'
 end
 
 health_fan = Member.find_or_create_by(email: 'health@example.com') do |member|
