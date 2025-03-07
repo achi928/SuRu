@@ -1,0 +1,44 @@
+<div class='container mt-4'>
+  <h2 class='fw-bold text-center border-bottom pb-2 mb-4'>
+    <%= @member.nickname %> の会員詳細
+  </h2>
+
+  <div class='row justify-content-center'>
+    <div class='col-12 col-md-8'>
+      <table class='table'>
+        <tbody>
+          <tr>
+            <th>会員ID</th>
+            <td><%= @member.id %></td>
+          </tr>
+          <tr>
+            <th>ニックネーム</th>
+            <td><%= @member.nickname %></td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <td>
+              <%= @member.is_active ? '有効' : '退会' %>
+            </td>
+            <td class='text-end'>
+              <%= link_to '退会', admin_withdraw_path(@member.id), method: :patch, class: 'btn btn-danger btn-sm' %>
+            </td>
+          </tr>
+          <tr>
+            <th>コメント一覧</th>
+            <td colspan='2'>
+              <% @member.comments.each do |comment| %>
+                <div class='d-flex justify-content-between '>
+                  comment.content
+                  <div class='text-end'>
+                    <%= link_to '削除', admin_member_comment_path(@member.id, comment.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                  </div>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

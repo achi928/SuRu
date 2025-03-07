@@ -1,5 +1,4 @@
 class Member::MembersController < ApplicationController
-
   before_action :authenticate_member!
   before_action :set_member, only: [:mypage, :edit, :update, :unsubscibe, :withdraw]
 
@@ -28,6 +27,7 @@ class Member::MembersController < ApplicationController
 
   def withdraw
     @member.update(is_active: false)
+    #強制ログアウト
     reset_session
     flash[:notice] = "いつでも戻ってきてね、またね〜"
     redirect_to root_path
