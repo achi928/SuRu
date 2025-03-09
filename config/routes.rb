@@ -16,9 +16,9 @@ Rails.application.routes.draw do
     resources :calendars, only: [:index]
     get 'groups/search', to: 'groups#search'
 
-    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
-      resources :group_posts, only: [:new, :create, :show, :index, :edit, :update]
-      resources :memberships, only: [:create, :destroy]
+    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, ] do
+      resources :group_posts, only: [:create, :show, :edit, :update]
+      resources :memberships, only: [:create, :show, :destroy]
     end
     
     resources :group_posts, only: [] do

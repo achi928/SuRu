@@ -1,0 +1,15 @@
+<div class = 'container mt-5'>
+  <div class = 'row justify-content-center'>
+    <div class = 'col-md-6 col-12 text-center'>
+      <%= image_tag @group.get_group_image %>
+      <h2 class = 'text-center mb-4'><%= @group.name %></h2>
+      <%= @group.category.name %><br>
+      <%= @group.introduction %><br>
+      <% if current_member.groups.exists?(@group.id) %>
+        すでに入会しています
+      <% else %>
+        <%= link_to '入会する', group_memberships_path(@group.id), method: :post %>
+      <% end %>
+    </div>
+  </div>
+</div>

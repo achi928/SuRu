@@ -5,7 +5,6 @@ class Member < ApplicationRecord
 
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
-  has_many :groups, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :group_posts, dependent: :destroy
@@ -21,11 +20,11 @@ class Member < ApplicationRecord
   end
   
   def get_profile_image
-  unless profile_image.attached?
-    file_path = Rails.root.join('app/assets/images/default.png')
-    profile_image.attach(io: File.open(file_path), filename: 'default-image.png')
-  end
-    profile_image.variant(resize_to_limit: [300, 200]).processed
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/default.png')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.png')
+    end
+      profile_image.variant(resize_to_limit: [300, 200]).processed
   end
   
   def age_group
