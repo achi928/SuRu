@@ -1,14 +1,18 @@
-<div class = 'container mt-5'>
+<div class = 'container'>
   <div class = 'row justify-content-center'>
     <div class = 'col-md-6 col-12 text-center'>
       <%= image_tag @group.get_group_image %>
       <h2 class = 'text-center mb-4'><%= @group.name %></h2>
       <%= @group.category.name %><br>
       <%= @group.introduction %><br>
+      <% @group.members.each do |member| %>
+        <%= image_tag member.get_profile_image %>
+      <% end %>
       <% if current_member.groups.exists?(@group.id) %>
-        すでに入会しています
+        入会中
+        <%= link_to '編集する', edit_group_path(@group.id), class: 'btn btn-secondary' %>
       <% else %>
-        <%= link_to '入会する', group_memberships_path(@group.id), method: :post %>
+        <%= link_to '入会する', group_memberships_path(@group.id), method: :post, class: 'btn btn-info' %>
       <% end %>
     </div>
   </div>

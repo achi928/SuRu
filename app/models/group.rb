@@ -7,6 +7,10 @@ class Group < ApplicationRecord
   
   has_one_attached :group_image
 
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :category_id, presence: true
+
   def get_group_image
     unless group_image.attached?
       file_path = Rails.root.join('app/assets/images/group.png')
