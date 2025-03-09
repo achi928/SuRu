@@ -4,7 +4,7 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     category = Category.create(category_params)
-    flash.now[:notice] = 'カテゴリーを追加しました'
+    flash[:notice] = 'カテゴリーを追加しました'
     redirect_to admin_categories_path
   end
 
@@ -18,13 +18,13 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     @category.update(category_params)
-    flash.now[:notice] = 'カテゴリーを編集しました'
+    flash[:notice] = 'カテゴリーを編集しました'
     redirect_to admin_categories_path
   end
 
   def destroy
     @category.destroy
-    flash.now[:notice] = 'カテゴリーを削除しました'
+    flash[:notice] = 'カテゴリーを削除しました'
     redirect_to admin_categories_path
   end
 

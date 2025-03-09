@@ -1,22 +1,40 @@
-<h1>マイページ</h1>
+<div class = 'container'>
+  <div class = 'row justify-content-center'>
+    <div class = 'col-md-6 col-12 text-center'>
+      <h2 class = 'text-center mb-4'>マイページ</h2>
+      <%= image_tag @member.get_profile_image %>
+      <table class = "index-table">
+        <tbody>
+          <tr>
+            <th>ニックネーム</th>
+            <th><%= @member.nickname %></th>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <th><%= @member.gender_i18n %></th>
+          </tr>
+          <tr>
+            <th>年代</th>
+            <th><%= @member.age_group %></th>
+          </tr>
+          <tr>
+            <%= link_to 'プロフィール編集', profile_edit_path %>
+          </tr>
+          <tr>
+            <th>所属グループ一覧</th>
+          </tr>
+          <tr>
+            <%= @member.groups.each do |group| %>
+              <%= link_to group_membership_path(group.id, group.memberships.id) do %>
+                <%= image_tag group.get_group_image %>
+                <%= group.name %>
+              <% end %>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
 
-<%= image_tag @member.get_profile_image %>
-<table class = "index-table">
-  <tbody>
-    <tr>
-      <th>ニックネーム</th>
-      <th><%= @member.nickname %></th>
-    </tr>
-    <tr>
-      <th>性別</th>
-      <th><%= @member.gender_i18n %></th>
-    </tr>
-    <tr>
-      <th>年代</th>
-      <th><%= @member.age_group %></th>
-    </tr>
-  </tbody>
-</table>
-<%= link_to 'プロフィール編集', profile_edit_path %>
-
-カレンダー
+      カレンダー
+    </div>
+  </div>
+</div>

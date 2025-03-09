@@ -3,6 +3,7 @@ class Member::MembersController < ApplicationController
   before_action :set_member, only: [:mypage, :edit, :update, :unsubscibe, :withdraw]
 
   def mypage
+    Membership.find_by(member_id: current_member.id, group_id: group.id)
   end
 
   def show
@@ -14,10 +15,10 @@ class Member::MembersController < ApplicationController
 
   def update
     if @member.update(member_params)
-      flash.now[:notice] = "プロフィールを更新しました"
+      flash[:notice] = 'プロフィールを更新しました'
       redirect_to mypage_path
     else
-      flash.now[:alert] = "プロフィールの更新に失敗しました"
+      flash.now[:alert] = 'プロフィールの更新に失敗しました'
       render :edit
     end
   end
@@ -29,7 +30,7 @@ class Member::MembersController < ApplicationController
     @member.update(is_active: false)
     #強制ログアウト
     reset_session
-    flash.now[:notice] = "いつでも戻ってきてね、またね〜"
+    flash[:notice] = 'いつでも戻ってきてね、またね〜'
     redirect_to root_path
   end
 

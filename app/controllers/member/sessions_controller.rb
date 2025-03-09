@@ -48,7 +48,7 @@ class Member::SessionsController < Devise::SessionsController
     end
     # 退会済み
     unless member.is_active
-      flash.now[:danger] = 'お客様は退会済みです。'
+      flash[:danger] = 'お客様は退会済みです。'
       redirect_to new_member_session_path
     end
   end

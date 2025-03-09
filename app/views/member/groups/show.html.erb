@@ -10,7 +10,11 @@
       <% end %>
       <% if current_member.groups.exists?(@group.id) %>
         入会中
-        <%= link_to '編集する', edit_group_path(@group.id), class: 'btn btn-secondary' %>
+        <% if @group.owner&.id == current_member.id %>
+          <%= link_to '編集する', edit_group_path(@group.id), class: 'btn btn-secondary' %>
+        <% end %>
+      <% elsif @group.memberships.count >= 5 %>
+        満員
       <% else %>
         <%= link_to '入会する', group_memberships_path(@group.id), method: :post, class: 'btn btn-info' %>
       <% end %>

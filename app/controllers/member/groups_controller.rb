@@ -11,7 +11,7 @@ class Member::GroupsController < ApplicationController
     @group.owner_id = current_member.id
     if @group.save
       membership = Membership.create!(group_id: @group.id, member_id: current_member.id)
-      flash.now[:notice] = 'グループを作成しました！'
+      flash[:notice] = 'グループを作成しました！'
       redirect_to group_membership_path(@group.id, membership.id)
     else
       flash.now[:alert] = 'グループの作成に失敗しました'
@@ -30,7 +30,7 @@ class Member::GroupsController < ApplicationController
   def update
     if @group.update(group_params)
       redirect_to group_path(@group.id)
-      flash.now[:notice] = 'グループを編集しました！'
+      flash[:notice] = 'グループを編集しました！'
     else
       flash.now[:notice] = 'グループの作成に失敗しました'
       render :edit
@@ -39,7 +39,7 @@ class Member::GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    flash.now[:notice] = 'グループを削除しました'
+    flash[:notice] = 'グループを削除しました'
     redirect_to mypage_path
   end
   
