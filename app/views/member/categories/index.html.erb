@@ -1,4 +1,8 @@
 <div class = 'container mt-5'>
+  <%= form_with url: groups_search_path, method: :get do |f| %>
+    <%= f.text_field :word %>
+    <%= f.submit '検索', class: 'btn btn-success' %>
+  <% end %>
   <h3 class = 'fw-bold border-bottom pb-3 mb-5 text-center'>カテゴリー一覧・追加</h3>
 
   <div class = 'row justify-content-center'>

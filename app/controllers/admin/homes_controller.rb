@@ -4,4 +4,5 @@ class Admin::HomesController < ApplicationController
   def top
     @members = Member.all.page(params[:page])
   end
+  
 end

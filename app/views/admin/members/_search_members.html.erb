@@ -1,0 +1,29 @@
+<div class="container">
+  <table class="table table-bordered table-hover text-center align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>会員ID</th>
+        <th>ニックネーム</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% members.each do |member| %>
+        <tr>
+          <td><%= member.id %></td>
+          <td>
+            <%= link_to member.nickname, admin_member_path(member.id), class: "text-dark fw-bold" %>
+          </td>
+          <td>
+            <span class="<%= member.is_active ? 'text-success fw-bold' : 'text-secondary fw-bold' %>">
+              <%= member.is_active ? '有効' : '退会' %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= paginate members %>
+  </div>
+</div>
