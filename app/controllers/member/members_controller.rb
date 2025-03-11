@@ -1,5 +1,4 @@
 class Member::MembersController < ApplicationController
-
   before_action :authenticate_member!
   before_action :set_member, only: [:mypage, :edit, :update, :unsubscibe, :withdraw]
 
@@ -15,10 +14,10 @@ class Member::MembersController < ApplicationController
 
   def update
     if @member.update(member_params)
-      flash[:notice] = "プロフィールを更新しました"
+      flash[:notice] = 'プロフィールを更新しました'
       redirect_to mypage_path
     else
-      flash[:alert] = "プロフィールの更新に失敗しました"
+      flash.now[:alert] = 'プロフィールの更新に失敗しました'
       render :edit
     end
   end
@@ -27,10 +26,17 @@ class Member::MembersController < ApplicationController
   end
 
   def withdraw
-    @member.update(is_active: false)
-    reset_session
-    flash[:notice] = "いつでも戻ってきてね、またね〜"
-    redirect_to root_path
+    if @member.update(is_active: false)
+      @member.memberships.update_all(is_active: false)
+      @member.change_group_owner
+      #強制ログアウト
+      reset_session
+      flash[:notice] = 'お疲れ様でした！またいつでも戻ってきてね〜'
+      redirect_to root_path
+    else
+      flash[:alert] = '退会処理に失敗しました'
+      redirect_to mypage_path
+    end
   end
 
   private

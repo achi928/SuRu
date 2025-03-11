@@ -1,5 +1,8 @@
 class Admin::HomesController < ApplicationController
+  before_action :authenticate_admin!
+
   def top
-    @users = User.all.page(params[:page])
+    @members = Member.all.page(params[:page])
   end
+  
 end

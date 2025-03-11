@@ -1,12 +1,15 @@
 ja:
-  enums:
-    member:
-      gender:
-        unspecified: '未設定'
-        female: '女性'
-        male: '男性'
-
   activerecord:
+    models:
+      group: 'グループ'
+      category: 'カテゴリー'
+    attributes:
+      group:
+        name: 'グループ名'
+        introduction: 'グループ紹介'
+        category: "カテゴリー"
+      category:
+        name: 'カテゴリー'
     errors:
       models:
         member:
@@ -19,22 +22,12 @@ ja:
             nickname:
               blank: 'ニックネームを入力してください'
               too_short: 'ニックネームは%{count}文字以上で入力してください'
+        group:
+          attributes:
+            category:
+              required: 'カテゴリーの入力が必須です'
 
   errors:
     messages:
       not_saved: '保存に失敗しました。入力内容を確認してください。'
 
-  devise:
-    failure:
-      member:
-        invalid: 'メールアドレスまたはパスワードが違います。'
-
-    registrations:
-      signed_up: '登録が完了しました。ようこそSuRuへ！'
-      member:
-        signed_up: '登録が完了しました。ようこそSuRuへ！'
-
-    sessions:
-      member:
-        signed_in: 'ログインしました'
-        signed_out: 'ログアウトしました'

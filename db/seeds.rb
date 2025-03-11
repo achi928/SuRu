@@ -7,15 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Members
 beauty_lover = Member.find_or_create_by(email: 'beauty@example.com') do |member|
-  member.nickname = 'BeautyLoverA'
+  member.nickname = 'BeautyLover'
   member.birth_year = 1995
   member.gender = 1  # Female
   member.is_active = true
-  member.password = '123456'
+  member.password = '111111'
 end
 
 health_fan = Member.find_or_create_by(email: 'health@example.com') do |member|
-  member.nickname = 'HealthFanB'
+  member.nickname = 'HealthFan'
   member.birth_year = 1990
   member.gender = 2  # Male
   member.is_active = true
@@ -65,4 +65,8 @@ end
 Like.find_or_create_by(member_id: beauty_lover.id, group_post_id: morning_run_post.id)
 Like.find_or_create_by(member_id: health_fan.id, group_post_id: skin_care_post.id)
 
-puts "✅ 初期データ作成完了！（find_or_create_by版）"
+admin = Admin.find_or_create_by(email: 'admin@example.com') do |admin|
+  admin.password = '000000'
+end
+
+puts "✅ seedファイルOK！"

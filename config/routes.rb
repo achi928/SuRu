@@ -14,17 +14,23 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     resources :calendars, only: [:index]
-    resources :memberships, only: [:create, :destroy]
+    get 'groups/search', to: 'groups#search'
 
-    resources :group_posts, only: [:new, :create, :show, :index, :edit, :update] do
-      resources :likes, only: [:create]
-      resources :comments, only: [:create, :index, :edit, :update]
+    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, ] do
+      resources :group_posts, only: [:create, :show, :edit, :update]
+      resources :memberships, only: [:create]
+      get 'memberships/:member_id', to: 'memberships#show', as: 'my_membership'
+      patch 'membership/:id/withdraw', to: 'memberships#withdraw', as: 'membership'
     end
-    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy]
-    get 'groups_search', to: 'groups#search'
-
+    
+    
+    resources :group_posts, only: [] do
+      resources :comments, only: [:create, :index, :edit, :update]
+      resources :likes, only: [:create]
+    end
+    
     resources :categories, only: [:index]
-    get 'categories/:id/groups', to: 'categories#groups'
+    get 'categories/:id/groups', to: 'categories#groups', as: "category_groups"
 
     resources :members, only: [:show]
     get 'mypage', to: 'members#mypage'
@@ -39,13 +45,13 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     root to: 'homes#top'
-    patch 'withdraw', to: 'members#withdraw'
+    patch 'withdraw/:id', to: 'members#withdraw', as: "withdraw"
     get 'members/search', to: 'members#search'
-    resources :members, only: [:index, :show, :update] do
+    resources :members, only: [:index, :show] do
       resources :comments, only: [:index, :destroy]
     end
     resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]
-    resources :groups, only: [:index, :destroy]
+    resources :groups, only: [:index, :show, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

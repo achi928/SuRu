@@ -1,0 +1,42 @@
+<div class='container mt-4'>
+  <h3 class='fw-bold border-bottom pb-2 mb-4 text-center'>グループ一覧</h3>
+
+  <div class='row mb-4'>
+    <div class='col-12 col-md-8 mx-auto'>
+      <div class='p-3 border rounded bg-light'>
+        <%= form_with url: admin_groups_path, method: :get, class: 'd-flex' do |f| %>
+          <%= f.text_field :word, class: 'form-control me-2', placeholder: 'グループ名' %>
+          <%= f.submit '検索', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-12 col-md-8 mx-auto'>
+      <div class='table-responsive'>
+        <table class='table table-hover align-middle'>
+          <thead class='thead-light'>
+            <tr>
+              <th class='text-center' style='width: 150px;'>カテゴリー</th>
+              <th class='text-center'>グループ名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @groups.each do |group| %>
+              <tr>
+                <td class='text-center'><%= group.category.name %></td>
+                <td class='align-middle text-center'>
+                  <%= link_to group.name, admin_group_path(group.id), class: 'fw-bold text-dark' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+          <%= paginate @groups %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@
 <%= form_with model: @member, url: profile_path, method: :patch do |f| %>
 
   <%= f.label :profile_image, 'プロフィール画像' %>
-  <%= f.file_field :profile_image, accept: "image/*" %><br>
+  <%= f.file_field :profile_image, accept: "image/jpeg, image/png, image/webp" %><br>
 
   <%= f.label :nickname, 'ニックネーム' %>
   <%= f.text_field :nickname %><br>

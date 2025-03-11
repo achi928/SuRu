@@ -1,22 +1,43 @@
-<h1>マイページ</h1>
+<div class = 'container'>
+  <div class = 'row justify-content-center'>
+    <div class = 'col-md-6 col-12 text-center'>
+      <h2 class = 'text-center mb-4'>マイページ</h2>
+      <%= image_tag @member.get_profile_image, class: 'mb-3' %>
 
-<%= image_tag @member.get_profile_image %>
-<table class = "index-table">
-  <tbody>
-    <tr>
-      <th>ニックネーム</th>
-      <th><%= @member.nickname %></th>
-    </tr>
-    <tr>
-      <th>性別</th>
-      <th><%= @member.gender_i18n %></th>
-    </tr>
-    <tr>
-      <th>年代</th>
-      <th><%= @member.age_group %></th>
-    </tr>
-  </tbody>
-</table>
-<%= link_to 'プロフィール編集', profile_edit_path %>
+      <table class = 'table table-bordered table-striped text-center'>
+        <tbody>
+          <tr>
+            <th class = 'w-50'>ニックネーム</th>
+            <td><%= @member.nickname %></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td><%= @member.gender_i18n %></td>
+          </tr>
+          <tr>
+            <th>年代</th>
+            <td><%= @member.age_group %></td>
+          </tr>
+          <tr>
+            <th>所属グループ一覧</th>
+            <td>
+              <% if @member.active_memberships.exists? %>
+                <% @member.active_memberships.each do |membership| %>
+                  <%= link_to membership.group.name, group_my_membership_path(membership.group.id, @member.id) %><br>
+                <% end %>
+              <% else %>
+                <div>所属グループなし</div>
+              <% end %>          
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-カレンダー
+      <div class = 'mt-3'>
+        <%= link_to 'プロフィール編集', profile_edit_path, class: 'btn btn-primary' %>
+      </div>
+
+      <h3 class = 'mt-4'>カレンダー</h3>
+    </div>
+  </div>
+</div>
