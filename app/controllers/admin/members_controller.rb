@@ -7,7 +7,7 @@ class Admin::MembersController < ApplicationController
 
   def withdraw
     @member.update(is_active: false)
-    flash[:notice] = '#{@member.nickname}さんを退会済みにしました'
+    flash[:notice] = "#{@member.nickname}さんを退会済みにしました"
     redirect_to admin_root_path
   end
 

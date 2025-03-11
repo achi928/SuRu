@@ -1,7 +1,14 @@
-<h2 class = 'text-center mb-4'>会員一覧</h2>
-<p>会員検索</p>
-<%= form_with url: admin_members_search_path, method: :get do |f| %>
-  <%= f.text_field :word %>
-  <%= f.submit '検索', class: 'btn btn-success' %>
-<% end %>
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col-12 col-md-8 mx-auto">
+      <div class="p-3 border rounded bg-light">
+        <%= form_with url: admin_members_search_path, method: :get, class: 'd-flex' do |f| %>
+          <%= f.text_field :word, class: 'form-control me-2', placeholder: '会員名' %>
+          <%= f.submit '検索', class: 'btn btn-info' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= render 'admin/members/search_members', members: @members %>

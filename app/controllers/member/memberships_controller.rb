@@ -3,25 +3,31 @@ class Member::MembershipsController < ApplicationController
 
   def create
     group = Group.find(params[:group_id])
-    membership = Membership.create!(group_id: group.id, member_id: current_member.id)
-    redirect_to group_membership_path(group.id, membership.id)
+    membership = Membership.find_by(member_id: current_member.id, group_id: group.id)
+    if membership
+      membership.update(is_active: true)
+    else
+      membership = Membership.create!(group_id: group.id, member_id: current_member.id)
+    end
+    redirect_to group_my_membership_path(group.id, current_member.id)
   end
   
   def show
     @group = Group.find(params[:group_id])
-    @membership = Membership.find(params[:id])
+    @member = Member.find(params[:member_id])
+    @membership = Membership.where(group_id: @group.id, member_id: @member.id).first
   end
 
-  def destroy
+  def withdraw
+    group = Group.find(params[:group_id])
     membership = Membership.find(params[:id])
-    if membership.destroy
-      flash[:notice] = '退会しました'
-      redirect_to mypage_path
-    else
-      flash.now[:alert] = '退会に失敗しました'
-      render :show
+    if membership.update!(is_active: false)
+      flash[:notice] = 'グループから退会しました'
+      if group.owner_id == current_member.id
+        group.change_owner
+      end
     end
+    redirect_to mypage_path
   end
   
-
 end

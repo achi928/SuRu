@@ -4,6 +4,7 @@
 
 <div class="container">
   <h2 class="text-center mb-4">
+    <!-- 新規作成かどうかを判定。newグループ作成、editグループ更新 -->
     <%= group.new_record? ? 'グループ作成' : 'グループ編集' %>
   </h2>
 
@@ -22,10 +23,10 @@
     </div>
     <div class="form_group">
       <label>グループ画像</label>
-      <%= f.file_field :group_image, accept: 'image/*', class: 'form-control-file' %>
+      <%= f.file_field :group_image, accept: 'image/jpeg, image/png, image/webp', class: 'form-control-file' %>
     </div>    
 
-    <!-- `new` なら「グループ作成」、`edit` なら「グループ更新」 -->
+    <!-- 新規作成かどうかを判定。newグループ作成、editグループ更新 -->
     <% if group.new_record? %>
       <%= f.submit 'グループ作成', class: 'btn btn-success' %>
     <% else %>

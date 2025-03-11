@@ -12,7 +12,7 @@ class Member::GroupsController < ApplicationController
     if @group.save
       membership = Membership.create!(group_id: @group.id, member_id: current_member.id)
       flash[:notice] = 'グループを作成しました！'
-      redirect_to group_membership_path(@group.id, membership.id)
+      redirect_to group_my_membership_path(@group.id, current_member.id)
     else
       flash.now[:alert] = 'グループの作成に失敗しました'
       render :new

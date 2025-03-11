@@ -3,7 +3,6 @@ class Member::MembersController < ApplicationController
   before_action :set_member, only: [:mypage, :edit, :update, :unsubscibe, :withdraw]
 
   def mypage
-    Membership.find_by(member_id: current_member.id, group_id: group.id)
   end
 
   def show
@@ -27,11 +26,17 @@ class Member::MembersController < ApplicationController
   end
 
   def withdraw
-    @member.update(is_active: false)
-    #強制ログアウト
-    reset_session
-    flash[:notice] = 'いつでも戻ってきてね、またね〜'
-    redirect_to root_path
+    if @member.update(is_active: false)
+      @member.memberships.update_all(is_active: false)
+      @member.change_group_owner
+      #強制ログアウト
+      reset_session
+      flash[:notice] = 'お疲れ様でした！またいつでも戻ってきてね〜'
+      redirect_to root_path
+    else
+      flash[:alert] = '退会処理に失敗しました'
+      redirect_to mypage_path
+    end
   end
 
   private

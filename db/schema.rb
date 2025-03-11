@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2025_03_04_113119) do
   create_table "memberships", force: :cascade do |t|
     t.integer "member_id", null: false
     t.integer "group_id", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -3,7 +3,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
 
   def create
-    category = Category.create(category_params)
+    category = Category.create!(category_params)
     flash[:notice] = 'カテゴリーを追加しました'
     redirect_to admin_categories_path
   end

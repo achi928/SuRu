@@ -18,8 +18,11 @@ Rails.application.routes.draw do
 
     resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, ] do
       resources :group_posts, only: [:create, :show, :edit, :update]
-      resources :memberships, only: [:create, :show, :destroy]
+      resources :memberships, only: [:create]
+      get 'memberships/:member_id', to: 'memberships#show', as: 'my_membership'
+      patch 'membership/:id/withdraw', to: 'memberships#withdraw', as: 'membership'
     end
+    
     
     resources :group_posts, only: [] do
       resources :comments, only: [:create, :index, :edit, :update]
@@ -48,7 +51,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :destroy]
     end
     resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]
-    resources :groups, only: [:index, :destroy]
+    resources :groups, only: [:index, :show, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -18,10 +18,12 @@
           <tr>
             <th>会員ステータス</th>
             <td>
-              <%= @member.is_active ? '有効' : '退会' %>
+              <%= @member.is_active ? '有効' : '退会済' %>
             </td>
             <td class='text-end'>
+            <% if @member.is_active %>
               <%= link_to '退会', admin_withdraw_path(@member.id), method: :patch, class: 'btn btn-danger btn-sm' %>
+            <% end %>
             </td>
           </tr>
           <tr>
@@ -29,7 +31,7 @@
             <td colspan='2'>
               <% @member.comments.each do |comment| %>
                 <div class='d-flex justify-content-between '>
-                  comment.content
+                  <%= comment.content %>
                   <div class='text-end'>
                     <%= link_to '削除', admin_member_comment_path(@member.id, comment.id), method: :delete, class: 'btn btn-danger btn-sm' %>
                   </div>

@@ -9,7 +9,6 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, presence: true
-  validates :category_id, presence: true
 
   def get_group_image
     unless group_image.attached?
@@ -18,4 +17,23 @@ class Group < ApplicationRecord
     end
       group_image.variant(resize_to_limit: [300, 200]).processed
   end
+
+  def active_members
+    members.where(memberships: {is_active: true})
+  end
+
+    
+  def change_owner
+    # where.not(member_id: current_member.id)で、今回退会する人(current_member)を省いたメンバーIDを取得する
+    # order(:id)で古い人が先に並べ替え、SQLだと、ORDER BY id ASC
+    active_members = memberships.active.where.not(member_id: self.owner_id).order(:id)
+    # 一番古くからいるメンバーを新しいオーナーにする
+    new_owner = active_members.first
+    if new_owner
+      self.update(owner_id: new_owner.member_id)
+    else
+      self.destroy
+    end
+  end
+
 end
