@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     patch 'withdraw/:id', to: 'members#withdraw', as: "withdraw"
     get 'members/search', to: 'members#search'
-    resources :members, only: [:index, :show] do
+    resources :members, only: [:show] do
       resources :comments, only: [:index, :destroy]
     end
     resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]

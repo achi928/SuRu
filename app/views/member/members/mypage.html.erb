@@ -21,8 +21,8 @@
           <tr>
             <th>所属グループ一覧</th>
             <td>
-              <% if @member.active_memberships.exists? %>
-                <% @member.active_memberships.each do |membership| %>
+              <% if @member.memberships.active.exists? %>
+                <% @member.memberships.active.each do |membership| %>
                   <%= link_to membership.group.name, group_my_membership_path(membership.group.id, @member.id) %><br>
                 <% end %>
               <% else %>
