@@ -5,6 +5,7 @@
       <h2 class = 'text-center mb-4'><%= @group.name %></h2>
       <%= @group.category.name %><br>
       <%= @group.introduction %><br>
+      グループオーナー<%= @group.owner.nickname %><br>
       <% @group.active_members.each do |member| %>
         <%= link_to member_path(member.id) do %>
           <%= image_tag member.get_profile_image %>

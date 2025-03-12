@@ -6,9 +6,15 @@ class Admin::MembersController < ApplicationController
   end
 
   def withdraw
-    @member.update(is_active: false)
-    flash[:notice] = "#{@member.nickname}さんを退会済みにしました"
-    redirect_to admin_root_path
+    if @member.update(is_active: false)
+      @member.memberships.update_all(is_active: false)
+      @member.change_group_owner
+      flash[:notice] = "#{@member.nickname}さんを退会済みにしました"
+      redirect_to admin_root_path
+    else
+      flash[:alert] = '退会処理に失敗しました'
+      redirect_to admin_member_path(@member.id)
+    end
   end
 
   def search

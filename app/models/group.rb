@@ -24,7 +24,7 @@ class Group < ApplicationRecord
 
     
   def change_owner
-    # where.not(member_id: current_member.id)で、今回退会する人(current_member)を省いたメンバーIDを取得する
+    # where.not(member_id: self.owner_id)で、今回退会する人(current_member)を省いたメンバーIDを取得する
     # order(:id)で古い人が先に並べ替え、SQLだと、ORDER BY id ASC
     active_members = memberships.active.where.not(member_id: self.owner_id).order(:id)
     # 一番古くからいるメンバーを新しいオーナーにする

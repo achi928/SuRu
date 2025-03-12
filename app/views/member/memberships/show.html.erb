@@ -3,13 +3,13 @@
     <div class = 'col-md-6 col-12 text-center'>
       <%= image_tag @group.get_group_image %>
       <h2 class = 'text-center mb-4'><%= @group.name %></h2>
-      <h1 class = 'text-center mb-4'><%= @group.owner_id %></h1>
+      <h1 class = 'text-center mb-4'>グループオーナー<%= @group.owner.nickname %></h1>
       <p>グループポストの一覧（古い順から）<br>
         新規・編集  グループポストのフォーム<br>
         各ポストにいいね、コメント<br>
         自分のポストだけコメント見れる<br>
       </p>
-      <% if current_member.active_memberships.where(group_id: @group.id).exists? %>
+      <% if current_member.memberships.active.find_by(group_id: @group.id) %>
         <%= link_to '退会する', group_membership_path(@group.id, @membership.id), method: :patch, data: { confirm: "本当に退会しますか？" }, class: 'btn btn-secondary' %>
       <% end %>
       <% if @group.owner.id == current_member.id %>

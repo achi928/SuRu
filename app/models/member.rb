@@ -52,15 +52,6 @@ class Member < ApplicationRecord
       "60代以上"
     end
   end
-
-  # SELECT *
-  # FROM memberships
-  # WHERE member_id = current_member.id
-  # AND is_active = true;  
-  # membershipがactiveだけ、上のアソシエーションでmembershipsがあるからこのjoinはなし
-  def active_memberships
-    memberships.where(is_active: true)
-  end
   
   def change_group_owner
     owner_groups.each do |group|
