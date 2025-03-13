@@ -16,6 +16,8 @@ class Member::MembershipsController < ApplicationController
     @group = Group.find(params[:group_id])
     @member = Member.find(params[:member_id])
     @membership = Membership.where(group_id: @group.id, member_id: @member.id).first
+    @group_post = GroupPost.new
+    @group_posts = @group.group_posts
   end
 
   def withdraw

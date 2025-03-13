@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :group_posts, only: [:create, :show, :edit, :update]
       resources :memberships, only: [:create]
       get 'memberships/:member_id', to: 'memberships#show', as: 'my_membership'
-      patch 'membership/:id/withdraw', to: 'memberships#withdraw', as: 'membership'
+      patch 'membership/:id/withdraw', to: 'memberships#withdraw', as: 'withdraw_membership'
     end
     
     
