@@ -25,7 +25,7 @@ ja:
         group:
           attributes:
             category:
-              required: 'カテゴリーの入力が必須です'
+              required: 'の入力が必須です'
 
   errors:
     messages:
