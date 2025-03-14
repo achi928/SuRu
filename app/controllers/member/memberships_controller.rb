@@ -15,8 +15,8 @@ class Member::MembershipsController < ApplicationController
   
   def show
     @membership = Membership.where(group_id: @group.id, member_id: current_member.id).first
-    @group_post = GroupPost.new
-    @group_posts = @group.group_posts
+    @post = Post.new
+    @posts = @group.posts
   end
 
   def withdraw

@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="text-center mb-4">投稿編集</h2>
-  <%= form_with model: [@group, @group_post], method: :patch do |f| %>
+  <%= form_with model: [@group, @post], method: :patch do |f| %>
     <div class="form_group">
       <%= f.text_field :content, class: 'form-control' %>
       <%= f.file_field :post_image, accept: 'image/jpeg, image/png, image/webp', class: 'form-control-file' %>

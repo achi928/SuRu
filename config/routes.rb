@@ -17,14 +17,14 @@ Rails.application.routes.draw do
     get 'groups/search', to: 'groups#search'
 
     resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, ] do
-      resources :group_posts, only: [:create, :show, :edit, :update]
+      resources :posts, only: [:create, :show, :edit, :update]
       resources :memberships, only: [:create]
       get 'memberships/:member_id', to: 'memberships#show', as: 'my_membership'
       patch 'membership/:id/withdraw', to: 'memberships#withdraw', as: 'withdraw_membership'
     end
     
     
-    resources :group_posts, only: [] do
+    resources :posts, only: [] do
       resources :comments, only: [:create, :index, :edit, :update]
       resources :likes, only: [:create]
     end

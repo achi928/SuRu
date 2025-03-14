@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GroupPostTest < ActiveSupport::TestCase
+class Member::PostsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

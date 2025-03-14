@@ -7,7 +7,7 @@ class Member < ApplicationRecord
   has_many :groups, through: :memberships
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :group_posts, dependent: :destroy
+  has_many :posts, dependent: :destroy
   # オーナーが自分のグループを集める
   has_many :owner_groups, class_name: 'Group', foreign_key: :owner_id
 

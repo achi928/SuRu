@@ -1,6 +1,6 @@
-class CreateGroupPosts < ActiveRecord::Migration[6.1]
+class CreatePosts < ActiveRecord::Migration[6.1]
   def change
-    create_table :group_posts do |t|
+    create_table :posts do |t|
 
       t.integer :member_id, null: false
       t.integer :group_id, null: false

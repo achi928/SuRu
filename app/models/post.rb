@@ -1,7 +1,8 @@
-class GroupPost < ApplicationRecord
+class Post < ApplicationRecord
   belongs_to :member
   belongs_to :group
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :post_image
 
   validates :content, presence: true
@@ -12,6 +13,6 @@ class GroupPost < ApplicationRecord
     else
       nil
     end
-  end  
-  
+  end
+
 end

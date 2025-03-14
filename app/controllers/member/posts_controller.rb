@@ -1,21 +1,21 @@
-class Member::GroupPostsController < ApplicationController
+class Member::PostsController < ApplicationController
   before_action :authenticate_member!
   before_action :active_membership?
 
   def create
-    group_post = current_member.group_posts.new(group_post_params)
-    group_post.group_id = @group.id
-    group_post.save
+    post = current_member.posts.new(post_params)
+    post.group_id = @group.id
+    post.save
     redirect_to group_my_membership_path(group_id: @group.id, member_id: current_member.id)
   end
 
   def edit
-    @group_post = GroupPost.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
-    group_post = GroupPost.find(params[:id])
-    if group_post.update(group_post_params)
+    post = Post.find(params[:id])
+    if post.update(post_params)
       redirect_to group_my_membership_path(group_id: @group.id, member_id: current_member.id)
     else
       flash.now[:alert] = '投稿の編集に失敗しました'
@@ -25,8 +25,8 @@ class Member::GroupPostsController < ApplicationController
 
   private
 
-  def group_post_params
-    params.require(:group_post).permit(:content, :post_image)
+  def post_params
+    params.require(:post).permit(:content, :post_image)
   end
 
   def active_membership?
