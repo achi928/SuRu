@@ -21,7 +21,7 @@
 %>
       <% if current_member.memberships.where(group_id: @group.id, is_active: true).exists? %>
         入会中
-        <% if @group.owner&.id == current_member.id %>
+        <% if @group.owner.id == current_member.id %>
           <%= link_to '編集する', edit_group_path(@group.id), class: 'btn btn-secondary' %>
         <% end %>
         <% elsif @group.active_members.count >= 5 %>

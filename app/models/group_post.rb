@@ -7,8 +7,11 @@ class GroupPost < ApplicationRecord
   validates :content, presence: true
 
   def get_post_image
-    return unless post_image.attached?
-    post_image.variant(resize_to_limit: [300, 200]).processed
-  end
+    if post_image.attached?
+      post_image.variant(resize_to_limit: [300, 200]).processed
+    else
+      nil
+    end
+  end  
   
 end

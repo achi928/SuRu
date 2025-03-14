@@ -1,6 +1,6 @@
 class Member::GroupPostsController < ApplicationController
   before_action :authenticate_member!
-  before_action :active_member?, only: [:create, :edit, :update]
+  before_action :active_membership?
 
   def create
     group_post = current_member.group_posts.new(group_post_params)
@@ -29,7 +29,7 @@ class Member::GroupPostsController < ApplicationController
     params.require(:group_post).permit(:content, :post_image)
   end
 
-  def active_member?
+  def active_membership?
     @group = Group.find(params[:group_id])
     unless @group.memberships.active.exists?(member_id: current_member.id)
       redirect_to mypage_path
