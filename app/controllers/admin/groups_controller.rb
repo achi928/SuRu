@@ -2,6 +2,7 @@ class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
+    # グループ一覧と、検索結果が同じページ
     word = params[:word].to_s.strip # to_s は空文字が送られてきた時用
     if word.present? # wordが存在、空じゃないか
       @groups = Group.where('name LIKE ?', "%#{word}%").page(params[:page])

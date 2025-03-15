@@ -1,0 +1,18 @@
+<div class='container mt-4'>
+  <h3 class='fw-bold border-bottom pb-2 mb-4 text-center'>コメント一覧</h3>
+  <div class='row'>
+  <div class='col-12 col-md-8 mx-auto'>
+    <div class='table-responsive'>
+      <table class='table align-middle'>
+        <tbody>
+          <% @post.comments.each do |comment| %>
+            <tr>
+              <td class='text-center'><%= comment.member.nickname %></td>
+              <td class='align-middle text-center'><%= comment.content %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

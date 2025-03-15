@@ -3,31 +3,41 @@
     <div class = 'col-md-6 col-12 text-center'>
       <%= image_tag @group.get_group_image %>
       <h2 class = 'text-center mb-4'><%= @group.name %></h2>
-      <%= @group.category.name %><br>
-      <%= @group.introduction %><br>
-      グループオーナー<%= @group.owner.nickname %><br>
-      <% @group.active_members.each do |member| %>
-        <%= link_to member_path(member.id) do %>
-          <%= image_tag member.get_profile_image %>
-        <% end %>
+      <h1 class = 'text-center mb-4'>グループオーナー<%= @group.owner.nickname %></h1>
+
+      <%= link_to '退会する', group_withdraw_membership_path(@group.id, @membership.id), method: :patch, data: { confirm: "本当に退会しますか？" }, class: 'btn btn-secondary' %>
+
+      <% if @group.owner.id == current_member.id %>
+        <%= link_to '編集する', edit_group_path(@group.id), class: 'btn btn-secondary' %>
       <% end %>
-<%#
-  SELECT 1 
-  FROM memberships 
-  WHERE member_id = current_member.id 
-  AND group_id = @group.id 
-  AND is_active = true 
-  LIMIT 1;
-%>
-      <% if current_member.memberships.where(group_id: @group.id, is_active: true).exists? %>
-        入会中
-        <% if @group.owner.id == current_member.id %>
-          <%= link_to '編集する', edit_group_path(@group.id), class: 'btn btn-secondary' %>
+
+      <%= form_with model: [@group, @post] do |f| %>
+        <div class="form_group">
+          <label>新規投稿</label>
+          <%= f.text_field :content, class: 'form-control' %>
+          <%= f.file_field :post_image, accept: 'image/jpeg, image/png, image/webp', class: 'form-control-file' %>
+          <%= f.submit '投稿する', class: 'btn btn-success' %>
+         </div>
+      <% end %>
+
+      <% @new_posts.each do |post| %>
+        <% if post.get_post_image %>
+          <%= image_tag post.get_post_image %>
         <% end %>
-        <% elsif @group.active_members.count >= 5 %>
-        満員
-      <% else %>
-        <%= link_to '入会する', group_memberships_path(@group.id), method: :post, class: 'btn btn-info' %>
+        <% if post.member_id == current_member.id %>
+          <%= link_to "#{post.member.nickname}: #{post.content}", edit_group_post_path(@group.id, post.id), style: "color: black; text-decoration: none;" %></br>
+          <%= post.likes.count %>いいね
+          <%= link_to "#{post.comments.count}コメント", post_comments_path(post.id) %></br>
+          <% elsif !post.member.memberships.active.exists?(group_id: @group.id) %>
+          退会したメンバー: <%= post.content %>        
+        <% else %>
+          <%= "#{post.member.nickname}: #{post.content}" %><br>
+          <%= post.likes.count %>いいね
+          <%= link_to 'コメントする', new_post_comment_path(post.id) %>
+          <% unless post.likes.where(member_id: current_member.id).exists? %>
+            <%= link_to '♡', post_likes_path(post.id), method: :post %>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>

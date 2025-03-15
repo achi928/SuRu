@@ -3,9 +3,11 @@ class Admin::MembersController < ApplicationController
   before_action :set_member, only: [:show, :withdraw]
 
   def show
+    @member = Member.includes(:comments).find(params[:id])
   end
 
   def withdraw
+    @member = Member.find(params[:id])
     if @member.update(is_active: false)
       @member.memberships.update_all(is_active: false)
       @member.change_group_owner
@@ -17,19 +19,4 @@ class Admin::MembersController < ApplicationController
     end
   end
 
-  def search
-    word = params[:word].to_s.strip # to_s は空文字が送られてきた時用
-    if word.present? # wordが存在、空じゃないか
-      @search = Member.where('nickname LIKE ?', "%#{word}%").page(params[:page])
-    else
-      @search = Member.none
-    end
-  end
-  
-
-  private
-
-  def set_member
-    @member = Member.find(params[:id])
-  end
 end

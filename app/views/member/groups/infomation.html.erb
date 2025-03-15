@@ -1,0 +1,27 @@
+<div class = 'container'>
+  <div class = 'row justify-content-center'>
+    <div class = 'col-md-6 col-12 text-center'>
+      <%= image_tag @group.get_group_image %>
+      <h2 class = 'text-center mb-4'><%= @group.name %></h2>
+      <%= @group.category.name %><br>
+      <%= @group.introduction %><br>
+      グループオーナー<%= @group.owner.nickname %><br>
+      <% if @group.owner.id == current_member.id %>
+        <%= link_to '編集する', edit_group_path(@group.id), class: 'btn btn-secondary' %>
+      <% end %>
+      <% @group.memberships.active.each do |membership| %>
+        <%= link_to member_path(membership.member.id) do %>
+          <%= image_tag membership.member.get_profile_image %>
+        <% end %>
+      <% end %>
+      
+      <% if current_member.memberships.active.where(group_id: @group.id).exists? %>
+        入会中
+        <% elsif @group.memberships.active.count >= 5 %>
+        満員
+      <% else %>
+        <%= link_to '入会する', group_memberships_path(@group.id), method: :post, class: 'btn btn-info' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class Member::MembershipsController < ApplicationController
   before_action :authenticate_member!
-  before_action :active_membership?, only: [:show, :withdraw]
+  before_action :active_membership?, only: [:withdraw]
 
   def create
     group = Group.find(params[:group_id])
@@ -10,14 +10,14 @@ class Member::MembershipsController < ApplicationController
     else
       membership = Membership.create!(group_id: group.id, member_id: current_member.id)
     end
-    redirect_to group_my_membership_path(group.id, current_member.id)
+    redirect_to group_path(group.id)
   end
   
-  def show
-    @membership = Membership.where(group_id: @group.id, member_id: current_member.id).first
-    @post = Post.new
-    @posts = @group.posts
-  end
+  # def show
+  #   @membership = Membership.where(group_id: @group.id, member_id: current_member.id).first
+  #   @post = Post.new
+  #   @posts = @group.posts
+  # end
 
   def withdraw
     membership = Membership.find(params[:id])

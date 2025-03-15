@@ -6,17 +6,17 @@
       <div class = 'p-3 border rounded bg-light'>
         <%= form_with model: [:admin, @category] do |f| %>
           <div class = 'form-group'>
-            <label class = 'fw-bold'>カテゴリー画像</label>
+            <label>カテゴリー画像</label>
             <%= f.file_field :category_image, accept: 'image/jpeg, image/png, image/webp', class: 'form-control-file' %>
           </div>
 
           <div class = 'form-group'>
-            <label class = 'fw-bold'>カテゴリー名</label>
+            <label>カテゴリー名</label>
             <%= f.text_field :name, class: 'form-control', placeholder: 'カテゴリー名' %>
           </div>
 
           <div class = 'text-center'>
-            <%= f.submit 'カテゴリー追加', class: 'btn btn-success' %>
+            <%= f.submit 'カテゴリー追加', class: 'btn btn-info' %>
           </div>
         <% end %>
       </div>
@@ -29,10 +29,10 @@
         <table class = 'table table-hover align-middle'>
           <thead class = 'thead-light'>
             <tr>
-              <th class = 'text-center' style='width: 100px;'>画像</th>
+              <th class = 'text-center'>画像</th>
               <th class = 'text-center'>カテゴリー名</th>
-              <th class = 'text-center' style='width: 100px;'></th>
-              <th class = 'text-center' style='width: 100px;'></th>
+              <th class = 'text-center'></th>
+              <th class = 'text-center'></th>
             </tr>
           </thead>
           <tbody>
@@ -43,10 +43,10 @@
                 </td>
                 <td class = 'align-middle text-center'><%= category.name %></td>
                 <td>
-                  <%= link_to '編集', edit_admin_category_path(category.id), class: 'btn btn-success btn-sm' %>
+                  <%= link_to '編集', edit_admin_category_path(category.id), class: 'btn btn-primary btn-sm mt-4' %>
                 </td>
                 <td>
-                  <%= link_to '削除', admin_category_path(category.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                  <%= link_to '削除', admin_category_path(category.id), method: :delete, class: 'btn btn-danger btn-sm mt-4' %>
                 </td>
               </tr>
             <% end %>

@@ -23,7 +23,7 @@
             <td>
               <% if @member.memberships.active.exists? %>
                 <% @member.memberships.active.each do |membership| %>
-                  <%= link_to membership.group.name, group_my_membership_path(membership.group.id, @member.id) %><br>
+                  <%= link_to membership.group.name, group_path(membership.group.id) %><br>
                 <% end %>
               <% else %>
                 <div>所属グループなし</div>

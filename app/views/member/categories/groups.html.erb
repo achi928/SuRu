@@ -6,7 +6,7 @@
   <div class = 'row justify-content-center'>
     <% @category.groups.each do |group| %>
       <div class = 'col-6 col-md-4 mb-4 col-lg-3'>
-        <%= link_to group_path(group.id), style: 'text-decoration: none;' do %>
+        <%= link_to infomation_path(group.id), style: 'text-decoration: none;' do %>
           <%= image_tag group.get_group_image %><br>
           <%= group.name %>
         <% end %>

@@ -18,17 +18,12 @@ class Group < ApplicationRecord
       group_image.variant(resize_to_limit: [300, 200]).processed
   end
 
-  def active_members
-    members.where(memberships: {is_active: true})
-  end
-
-    
   def change_owner
     # where.not(member_id: self.owner_id)で、今回退会する人(current_member)を省いたメンバーIDを取得する
     # order(:id)で古い人が先に並べ替え、SQLだと、ORDER BY id ASC
-    target_active_members = self.memberships.active.where.not(member_id: self.owner_id).order(:id)
+    active_members = self.memberships.active.where.not(member_id: self.owner_id).order(:id)
     # 一番古くからいるメンバーを新しいオーナーにする
-    new_owner = target_active_members.first
+    new_owner = active_members.first
     if new_owner
       self.update(owner_id: new_owner.member_id)
     else

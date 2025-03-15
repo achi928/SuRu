@@ -6,7 +6,7 @@ class Member::PostsController < ApplicationController
     post = current_member.posts.new(post_params)
     post.group_id = @group.id
     post.save
-    redirect_to group_my_membership_path(group_id: @group.id, member_id: current_member.id)
+    redirect_to group_path(@group.id)
   end
 
   def edit
@@ -16,7 +16,7 @@ class Member::PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     if post.update(post_params)
-      redirect_to group_my_membership_path(group_id: @group.id, member_id: current_member.id)
+      redirect_to group_path(@group.id)
     else
       flash.now[:alert] = '投稿の編集に失敗しました'
       render :edit
