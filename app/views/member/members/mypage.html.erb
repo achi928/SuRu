@@ -1,6 +1,6 @@
 <div class = 'container'>
   <div class = 'row justify-content-center'>
-    <div class = 'col-md-6 col-12 text-center'>
+    <div class = 'col-md-8 col-12 text-center'>
       <h2 class = 'text-center mb-4'>マイページ</h2>
       <%= image_tag @member.get_profile_image, class: 'mb-3' %>
 
@@ -38,6 +38,13 @@
       </div>
 
       <h3 class = 'mt-4'>カレンダー</h3>
+
+      <div id="calendar"></div>
     </div>
   </div>
 </div>
+<style>
+.fc-event-time{
+  display: none;
+}
+</style>

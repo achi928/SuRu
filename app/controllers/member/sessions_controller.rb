@@ -4,11 +4,6 @@ class Member::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_inactive_member, only: [:create]
 
-  def create
-    sign_out(:admin) if admin_signed_in?  # 管理者がログイン中ならログアウト
-    super
-  end
-
   def after_sign_in_path_for(resource)
     mypage_path
   end

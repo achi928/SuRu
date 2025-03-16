@@ -3,6 +3,11 @@ class Member::MembersController < ApplicationController
   before_action :set_member, only: [:mypage, :edit, :update, :unsubscibe, :withdraw]
 
   def mypage
+    @posts = current_member.posts.order(created_at: :asc)
+    respond_to do |format|
+       format.html
+       format.json { render 'calendar' }
+    end
   end
 
   def show

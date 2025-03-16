@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       get '/members/sign_in', to: 'sessions#new', as: 'new_member_session'
       post '/members/sign_in', to: 'sessions#create', as: 'member_session'
       delete '/members/sign_out', to: 'sessions#destroy', as: 'destroy_member_session'
-    end  
-  
+    end
+
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
     resources :calendars, only: [:index]

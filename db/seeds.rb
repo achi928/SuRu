@@ -69,4 +69,13 @@ admin = Admin.find_or_create_by(email: 'admin@example.com') do |admin|
   admin.password = '000000'
 end
 
+10.times do |i|
+  Schedule.create!(
+    title: "筋トレ#{i+1}",
+    start: Time.zone.now + i.days,
+    end: Time.zone.now + i.days + 1.hour,
+    member_id: Member.all.sample.id
+  )
+end
+
 puts "✅ seedファイルOK！"

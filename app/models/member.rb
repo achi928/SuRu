@@ -3,11 +3,11 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :memberships, dependent: :destroy
+  has_many :memberships
   has_many :groups, through: :memberships
-  has_many :likes, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :posts, dependent: :destroy
+  has_many :likes
+  has_many :comments
+  has_many :posts
   # オーナーが自分のグループを集める
   has_many :owner_groups, class_name: 'Group', foreign_key: :owner_id
 

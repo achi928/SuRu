@@ -3,11 +3,6 @@
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  def create
-    sign_out(:member) if member_signed_in?  # メンバーがログイン中ならログアウト
-    super
-  end
-
   def after_sign_in_path_for(resource)
     admin_root_path
   end
