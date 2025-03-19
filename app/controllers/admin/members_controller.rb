@@ -1,6 +1,5 @@
 class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_member, only: [:show, :withdraw]
 
   def show
     @member = Member.includes(:comments).find(params[:id])

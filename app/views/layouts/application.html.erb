@@ -2,62 +2,64 @@
 <html>
   <head>
     <title>SuRu</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <script src="https://kit.fontawesome.com/5b36eeef0b.js" crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/5b36eeef0b.js' crossorigin='anonymous'></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
-  
-
-
 
   <body>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <div class="container-fluid">
-        <%= link_to "SuRu", root_path, class: "navbar-brand" %>
+    <header>
+      <nav class='navbar navbar-expand-md navbar-light '>
+        <div class='container-fluid'>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', alt: 'SuRu ロゴ', class: 'navbar-brand-logo' %>
+          <% end %>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="メニューを開く">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+          <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='メニューを開く'>
+            <span class='navbar-toggler-icon'></span>
+          </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
+          <div class='collapse navbar-collapse' id='navbarNav'>
+            <ul class='navbar-nav ml-auto'>
 
-            <% if member_signed_in? %>
-              <li class="nav-item"><%= link_to "マイページ", mypage_path, data: {"turbolinks" => false}, class: 'nav-link' %></li>
-              <li class="nav-item"><%= link_to "カテゴリー一覧", categories_path, data: {"turbolinks" => false}, class: 'nav-link' %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_member_session_path, data: {"turbolinks" => false}, method: :delete, class: 'nav-link' %></li>
+              <% if member_signed_in? %>
+                <li class='nav-item'><%= link_to 'マイページ', mypage_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'カテゴリー', categories_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link' %></li>
 
-            <% elsif admin_signed_in? %>
-              <li class="nav-item"><%= link_to "会員一覧", admin_root_path, class: 'nav-link' %></li>
-              <li class="nav-item"><%= link_to "グループ一覧", admin_groups_path, class: 'nav-link' %></li>
-              <li class="nav-item"><%= link_to "カテゴリ一覧", admin_categories_path, class: 'nav-link' %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
+              <% elsif admin_signed_in? %>
+                <li class='nav-item'><%= link_to '会員一覧', admin_root_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'グループ一覧', admin_groups_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'カテゴリ一覧', admin_categories_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
 
-            <% else %>
-              <li class="nav-item"><%= link_to "About", about_path, data: {"turbolinks" => false}, class: 'nav-link' %></li>
-              <li class="nav-item"><%= link_to "新規登録", new_member_registration_path, data: {"turbolinks" => false}, class: 'nav-link' %></li>
-              <li class="nav-item"><%= link_to "ログイン", new_member_session_path, data: {"turbolinks" => false}, class: 'nav-link' %></li>
-            <% end %>
+              <% else %>
+                <li class='nav-item'><%= link_to 'About', about_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to '新規登録', new_member_registration_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'ログイン', new_member_session_path, class: 'nav-link' %></li>
+              <% end %>
 
-          </ul>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <% flash.each do |key, message| %>
-    <div class="flash flash-<%= key %>"><%= message %></div>
-  <% end %>
+    <% flash.each do |key, message| %>
+      <div class='flash flash-<%= key %>'><%= message %></div>
+    <% end %>
+
+
+
     <%= yield %>
+
   </body>
 
-  <footer>
-    <p>Icons by <a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">FontAwesome</a></p>
-  </footer>
-
+    <footer>
+    </footer>
 </html>

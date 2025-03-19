@@ -12,12 +12,6 @@ class Member::MembershipsController < ApplicationController
     end
     redirect_to group_path(group.id)
   end
-  
-  # def show
-  #   @membership = Membership.where(group_id: @group.id, member_id: current_member.id).first
-  #   @post = Post.new
-  #   @posts = @group.posts
-  # end
 
   def withdraw
     membership = Membership.find(params[:id])
@@ -27,7 +21,7 @@ class Member::MembershipsController < ApplicationController
         @group.change_owner
       end
     else
-      flash[:notice] = 'グループから退会に失敗しました'
+      flash[:alert] = 'グループから退会に失敗しました'
     end
     redirect_to mypage_path
   end

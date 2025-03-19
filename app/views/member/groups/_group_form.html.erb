@@ -1,5 +1,7 @@
-<% group.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
+<% if @group.errors.any? %>
+  <% @group.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
 <% end %>
 
 <div class="container">

@@ -1,7 +1,34 @@
-<div class= 'container'>
-  <div class= 'd-flex justify-content-center'>
-    <h1>SuRuTOPページ</h1>
-    <%= link_to '新規登録', new_member_registration_path %>
-    <%= link_to 'ログイン', new_member_session_path %>
+<section class="main-visual">
+<h1>美と健康を、みんなで続ける</h1>
+<div class='d-flex flex-column align-items-center mt-5 text-center'>
+
+  <img src='<%= asset_path('top.png') %>' alt='SuRu ロゴ' class='img-fluid'>
+</section>
+
+
+<section class="thema-section">
+<h2>テーマ</h2>
+<p></p>
+</section>
+
+<section class="service-section">
+<h2>SuRuでできること</h2>
+<ul>
+  <li>🏃‍♀️ グループに参加して継続</li>
+  <li>🎯 目標を立ててチャレンジ</li>
+  <li>💬 みんなと励まし合いながら進める</li>
+  <li>📅 自分の記録をカレンダーで管理</li>
+</ul>
+</section>
+
+<section class="reviews">
+<h2>ユーザーの声</h2>
+<p>[ユーザーのコメント表示エリア]</p>
+</section>
+
+
+  <div class='mt-4 d-flex'>
+    <%= link_to '新規登録', new_member_registration_path, class: 'btn btn-primary' %>
+    <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-outline-primary' %>
   </div>
 </div>

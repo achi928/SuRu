@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ 
+ .navbar-brand-logo{
+  height: 60px;
+  width: auto;
+}
+
+body {
+  margin: 0;
+  height: 100vh;  /* ← 画面全体に適用するために必要！ */
+  background: linear-gradient(to top, #f1e6d3 , #f9f5f0);
+  background-size: cover;
+}
+
+.custom-font {
+  font-weight: 700;
+}

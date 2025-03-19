@@ -7,7 +7,7 @@ class Admin::GroupsController < ApplicationController
     if word.present? # wordが存在、空じゃないか
       @groups = Group.where('name LIKE ?', "%#{word}%").page(params[:page])
     else
-      @groups = Group.all.page(params[:page])
+      @groups = Group.includes(:category).page(params[:page])
     end
   end
 

@@ -13,12 +13,14 @@ class Member::CommentsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     group = post.group
-    comment = current_member.comments.new(comment_params)
-    comment.post_id = post.id
-    unless comment.save
+    @comment = current_member.comments.new(comment_params)
+    @comment.post_id = post.id
+    if @comment.save
+      redirect_to group_path(group.id)
+    else
       flash[:alert] = 'コメントに失敗しました。'
+      render :new
     end
-    redirect_to group_path(group.id)
   end
 
   def index

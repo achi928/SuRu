@@ -3,22 +3,13 @@
 <% end %>
 
 <div class="container">
-  <h2 class="text-center mb-4">
-    <!-- 新規作成かどうかを判定。newコメント、editコメント編集 -->
-    <%= @comment.new_record? ? 'コメントする' : 'コメント編集' %>
-  </h2>
+  <h2 class="text-center mb-4">コメントする</h2>
 
   <%= form_with model: @comment, url: post_comments_path, method: :post do |f| %>
     <div class="form_group">
       <label>コメント</label>
       <%= f.text_field :content, class: 'form-control' %>
     </div>
-
-    <!-- 新規作成かどうかを判定。newグループ作成、editグループ更新 -->
-    <% if @comment.new_record? %>
       <%= f.submit 'コメント投稿', class: 'btn btn-success' %>
-    <% else %>
-      <%= f.submit 'コメント更新', class: 'btn btn-success' %>
-    <% end %>
   <% end %>
 </div>

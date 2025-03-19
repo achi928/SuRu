@@ -47,7 +47,7 @@ class Member::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:nickname, :gender, :birth_year, :profile_image, :email, :encrypted_password)
+    params.require(:member).permit(:nickname, :gender, :birth_year, :profile_image, :email)
   end
 
   def set_member

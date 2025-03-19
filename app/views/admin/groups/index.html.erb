@@ -24,7 +24,7 @@
           </thead>
           <tbody>
             <% @groups.each do |group| %>
-              <tr>
+              <tr class='bg-white'>
                 <td class='text-center'><%= group.category.name %></td>
                 <td class='align-middle text-center'>
                   <%= link_to group.name, admin_group_path(group.id), class: 'fw-bold text-dark' %>
