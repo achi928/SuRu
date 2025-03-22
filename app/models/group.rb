@@ -10,12 +10,12 @@ class Group < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
 
-  def get_group_image
+  def get_group_image(weight,height)
     unless group_image.attached?
       file_path = Rails.root.join('app/assets/images/group.png')
       group_image.attach(io: File.open(file_path), filename: 'default-image.png')
     end
-      group_image.variant(resize_to_limit: [300, 200]).processed
+      group_image.variant(resize_to_limit: [weight,height]).processed
   end
 
   def change_owner

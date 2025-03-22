@@ -14,7 +14,7 @@
 
   <body>
     <header>
-      <nav class='navbar navbar-expand-md navbar-light '>
+      <nav class='navbar navbar-expand-md navbar-light bg-custom shadow-sm'>
         <div class='container-fluid'>
           <%= link_to root_path do %>
             <%= image_tag 'logo.png', alt: 'SuRu ロゴ', class: 'navbar-brand-logo' %>
@@ -28,9 +28,9 @@
             <ul class='navbar-nav ml-auto'>
 
               <% if member_signed_in? %>
-                <li class='nav-item'><%= link_to 'マイページ', mypage_path, class: 'nav-link' %></li>
-                <li class='nav-item'><%= link_to 'カテゴリー', categories_path, class: 'nav-link' %></li>
-                <li class='nav-item'><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'MyPage', mypage_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'Category', categories_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'Log Out', destroy_member_session_path, method: :delete, class: 'nav-link' %></li>
 
               <% elsif admin_signed_in? %>
                 <li class='nav-item'><%= link_to '会員一覧', admin_root_path, class: 'nav-link' %></li>
@@ -40,8 +40,8 @@
 
               <% else %>
                 <li class='nav-item'><%= link_to 'About', about_path, class: 'nav-link' %></li>
-                <li class='nav-item'><%= link_to '新規登録', new_member_registration_path, class: 'nav-link' %></li>
-                <li class='nav-item'><%= link_to 'ログイン', new_member_session_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'Sign Up', new_member_registration_path, class: 'nav-link' %></li>
+                <li class='nav-item'><%= link_to 'Log In', new_member_session_path, class: 'nav-link fs-4' %></li>
               <% end %>
 
             </ul>
@@ -53,8 +53,6 @@
     <% flash.each do |key, message| %>
       <div class='flash flash-<%= key %>'><%= message %></div>
     <% end %>
-
-
 
     <%= yield %>
 

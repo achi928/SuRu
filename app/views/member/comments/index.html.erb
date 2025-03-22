@@ -1,14 +1,14 @@
 <div class='container mt-4'>
-  <h3 class='fw-bold border-bottom pb-2 mb-4 text-center'>コメント一覧</h3>
+  <h1 class='fw-bold border-bottom pb-2 mb-4 text-center'>Comments</h1>
   <div class='row'>
   <div class='col-12 col-md-8 mx-auto'>
     <div class='table-responsive'>
-      <table class='table align-middle'>
+      <table class='table align-middle custom_back'>
         <tbody>
           <% @post.comments.each do |comment| %>
             <tr>
-              <td class='text-center'><%= comment.member.nickname %></td>
-              <td class='align-middle text-center'><%= comment.content %></td>
+              <th class='text-center'><%= comment.member.nickname %></th>
+              <th class='align-middle text-center'><%= comment.content %></th>
             </tr>
           <% end %>
         </tbody>

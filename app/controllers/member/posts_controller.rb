@@ -3,9 +3,9 @@ class Member::PostsController < ApplicationController
   before_action :active_membership?
 
   def create
-    post = current_member.posts.new(post_params)
-    post.group_id = @group.id
-    post.save
+    @post = current_member.posts.new(post_params)
+    @post.group_id = @group.id
+    @post.save
     redirect_to group_path(@group.id)
   end
 
@@ -14,8 +14,8 @@ class Member::PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
       redirect_to group_path(@group.id)
     else
       flash.now[:alert] = '投稿の編集に失敗しました'

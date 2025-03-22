@@ -1,3 +1,8 @@
+<div class='mt-4 d-flex'>
+<%= link_to '新規登録', new_member_registration_path, class: 'btn btn-primary' %>
+<%= link_to 'ログイン', new_member_session_path, class: 'btn btn-outline-primary' %>
+</div>
+
 <section class="main-visual">
 <h1>美と健康を、みんなで続ける</h1>
 <div class='d-flex flex-column align-items-center mt-5 text-center'>
@@ -12,7 +17,8 @@
 </section>
 
 <section class="service-section">
-<h2>SuRuでできること</h2>
+<div class='container my-5'>
+<h2 class='text-center font-weight-bold'>SuRuでできること</h2>
 <ul>
   <li>🏃‍♀️ グループに参加して継続</li>
   <li>🎯 目標を立ててチャレンジ</li>
@@ -21,14 +27,166 @@
 </ul>
 </section>
 
-<section class="reviews">
-<h2>ユーザーの声</h2>
-<p>[ユーザーのコメント表示エリア]</p>
+<section class='category'>
+  <div class='container text-center py-5'>
+    <h2 class='font-weight-bold'>Category</h2>
+    <p class='mb-5'>— カテゴリー </p>
+
+    <div class='row'>
+      <div class='col-md-3 col-6 mb-4'>
+        <div class='card p-2 shadow custom_back'>
+          <img src='/assets/meal.webp' alt='食事改善' class='img-fluid'>
+          <h5 class='mt-2'>食事改善</h5>
+        </div>
+      </div>
+
+      <div class='col-md-3 col-6 mb-4'>
+        <div class='card p-2 shadow custom_back'>
+          <img src='/assets/traning.webp' alt='トレーニング' class='img-fluid'>
+          <h5 class='mt-2'>トレーニング</h5>
+        </div>
+      </div>
+
+      <div class='col-md-3 col-6 mb-4'>
+        <div class='card p-2 shadow custom_back'>
+          <img src='/assets/walking.webp' alt='歩く' class='img-fluid'>
+          <h5 class='mt-2'>ウォーキング</h5>
+        </div>
+      </div>
+
+      <div class='col-md-3 col-6 mb-4'>
+        <div class='card p-2 shadow custom_back'>
+          <img src='/assets/run.webp' alt='ランニング' class='img-fluid'>
+          <h5 class='mt-2'>ランニング</h5>
+        </div>
+      </div>
+
+      <div class='col-md-3 col-6 mb-4'>
+        <div class='card p-2 shadow custom_back'>
+          <img src='/assets/mornig.webp' alt='早起き' class='img-fluid'>
+          <h5 class='mt-2'>早起き</h5>
+        </div>
+      </div>
+
+      <div class='col-md-3 col-6 mb-4'>
+        <div class='card p-2 shadow custom_back'>
+          <img src='/assets/night.webp' alt='早寝' class='img-fluid'>
+          <h5 class='mt-2'>早寝</h5>
+        </div>
+      </div>
+
+      <div class='col-md-3 col-6 mb-4'>
+        <div class='card p-2 shadow custom_back'>
+          <img src='/assets/yoga.webp' alt='マインドフルネス' class='img-fluid'>
+          <h5 class='mt-2'>ヨガ・ピラティス</h5>
+        </div>
+      </div>
+
+      <div class='col-md-3 col-6 mb-4'>
+        <div class='card p-2 shadow custom_back'>
+          <img src='/assets/cancel.webp' alt='キャンセル界隈' class='img-fluid'>
+          <h5 class='mt-2'>キャンセル界隈</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class='mt-5'>
+      <h4 class='text-danger font-weight-bold'>まずはカテゴリーを選ぼう！</h4>
+      <p>早寝・早起き、運動、美容習慣…<br>
+      同じ目標を持つ仲間とゆるく繋がって、一緒に続けよう</p>
+    </div>
+  </div>
 </section>
 
 
-  <div class='mt-4 d-flex'>
-    <%= link_to '新規登録', new_member_registration_path, class: 'btn btn-primary' %>
-    <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-outline-primary' %>
+<section class='reviews'>
+  <div class='container py-5'>
+    <h2 class='text-center font-weight-bold'>VOICE</h2>
+    <p class='text-center mb-5'>— ユーザーの声 —</p>
+
+    <div class='row'>
+      <div class='col-md-4 mb-4'>
+        <div class='card p-4 text-center'>
+          <div class='mb-3'>
+            <span class='badge badge-pill badge-red p-3'>
+              <i class='fas fa-cat'></i>
+            </span>
+          </div>
+          <p>友達から足細くなった？って言われた！<br>こっそりここで継続した甲斐あった！</p>
+          <p class='text-muted'>（10代女性）</p>
+        </div>
+      </div>
+
+      <div class='col-md-4 mb-4'>
+        <div class='card p-4 text-center'>
+          <div class='mb-3'>
+            <span class='badge badge-pill badge-orange p-3'>
+              <i class='fas fa-cat'></i>
+            </span>
+          </div>
+          <p>風呂キャンセル界隈卒業！！</p>
+          <p class='text-muted'>（匿名）</p>
+        </div>
+      </div>
+
+      <div class='col-md-4 mb-4'>
+        <div class='card p-4 text-center'>
+          <div class='mb-3'>
+            <span class='badge badge-pill badge-yellow p-3'>
+              <i class='fas fa-cat'></i>
+            </span>
+          </div>
+          <p>朝ランの習慣化に成功。<br>1日を有効活用できるようになって、<br>人生の充実度が上がった気がする。</p>
+          <p class='text-muted'>（30代男性）</p>
+        </div>
+      </div>
+
+      <div class='col-md-4 mb-4'>
+        <div class='card p-4 text-center'>
+          <div class='mb-3'>
+            <span class='badge badge-pill badge-pink p-3'>
+              <i class='fas fa-cat'></i>
+            </span>
+          </div>
+          <p>継続できて、綺麗になれて<br>間違いなく人生アプリ</p>
+          <p class='text-muted'>（20代女性）</p>
+        </div>
+      </div>
+
+      <div class='col-md-4 mb-4'>
+        <div class='card p-4 text-center'>
+          <div class='mb-3'>
+            <span class='badge badge-pill badge-green p-3'>
+              <i class='fas fa-cat'></i>
+            </span>
+          </div>
+          <p>同じ目標の仲間と筋トレを続けていたら、<br>最近肩が大きくなってきた！シンプルに良いことしかない！</p>
+          <p class='text-muted'>（20代男性）</p>
+        </div>
+      </div>
+
+      <div class='col-md-4 mb-4'>
+        <div class='card p-4 text-center'>
+          <div class='mb-3'>
+            <span class='badge badge-pill badge-purple p-3'>
+              <i class='fas fa-cat'></i>
+            </span>
+          </div>
+          <p>最近流行ってるから始めてみたら案外継続できてる。カレンダーで継続できてるか確認できるの嬉しい。</p>
+          <p class='text-muted'>（20代女性）</p>
+        </div>
+      </div>
+    </div>
+
+    <div class='text-center mt-5'>
+      <h4 class='text-danger font-weight-bold'>平均レビュー 4.6！</h4>
+      <p>Google Play、App Storeともに、非常に高い評価をいただいております。</p>
+      <p class='text-muted'>※2025年4月時点</p>
+    </div>
   </div>
+</section>
+
+
+
+
 </div>

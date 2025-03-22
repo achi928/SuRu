@@ -1,48 +1,50 @@
 <div class='container'>
   <div class='row justify-content-center'>
     <div class='col-md-8 col-12 text-center'>
-      <h2 class='text-center mb-4'>マイページ</h2>
-      <%= image_tag @member.get_profile_image, class: 'mb-3' %>
+      <h1 class='border-bottom text-center mt-5 mb-4'>MyPage</h1>
     </div>
   </div>
 
   <div class='row'>
     <div class='col-md-6 col-12'>
-      <table class='table table-bordered text-center'>
+      <table class='table rounded shadow custom_back'>
         <tbody>
+        <div class='d-flex justify-content-center'>
+        <%= image_tag @member.get_profile_image(150, 150), class: 'mb-3' %>
+        </div
           <tr>
-            <th class='w-50'>ニックネーム</th>
-            <td><%= @member.nickname %></td>
+            <th>NickName</th>
+            <th><%= @member.nickname %></th>
           </tr>
           <tr>
-            <th>性別</th>
-            <td><%= @member.gender_i18n %></td>
+            <th>Gender</th>
+            <th><%= @member.gender_i18n %></th>
           </tr>
           <tr>
-            <th>年代</th>
-            <td><%= @member.age_group %></td>
+            <th>Age Groups</th>
+            <th><%= @member.age_group %></th>
           </tr>
           <tr>
-            <th>所属グループ一覧</th>
-            <td>
+            <th>Groups</th>
+            <th>
               <% if @member.memberships.active.exists? %>
                 <% @member.memberships.active.each do |membership| %>
-                  <%= link_to membership.group.name, group_path(membership.group.id) %><br>
+                  <%= link_to membership.group.name, group_path(membership.group.id), class: 'text-dark' %><br>
                 <% end %>
               <% else %>
                 <div>所属グループなし</div>
               <% end %>          
-            </td>
+            </th>
           </tr>
         </tbody>
       </table>
 
       <div class='mt-3 text-center'>
-        <%= link_to 'プロフィール編集', profile_edit_path, class: 'btn btn-primary' %>
+        <%= link_to 'プロフィール編集', profile_edit_path, class: 'btn btn-outline-dark w-50' %>
       </div>
     </div>
 
-    <div class='col-md-6 col-12'>
+    <div class='col-md-6 col-12 mt-5 pt-5'>
       <div id='calendar'></div>
     </div>
   </div>

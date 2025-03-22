@@ -1,39 +1,50 @@
-<% if @group.errors.any? %>
-  <% @group.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-<% end %>
+<div class='container mt-5'>
+  <div class='row justify-content-center'>
+    <div class='col-lg-4 col-md-4 col-sm-8'>
 
-<div class="container">
-  <h2 class="text-center mb-4">
-    <!-- 新規作成かどうかを判定。newグループ作成、editグループ更新 -->
-    <%= group.new_record? ? 'グループ作成' : 'グループ編集' %>
-  </h2>
+      <!-- 新規作成かどうかを判定。newグループ作成、editグループ更新 -->
+      <h1 class='text-center mb-4 border-bottom'>
+        <%= group.new_record? ? 'New Group' : 'Edit Group' %>
+      </h1>
 
-  <%= form_with model: group do |f| %>
-    <div class="form_group">
-      <label>カテゴリー</label>
-      <%= f.collection_select(:category_id, Category.all, :id, :name, { prompt: '選択してください' }, { class: 'form-control' }) %>
-    </div>
-    <div class="form_group">
-      <label>グループ名</label>
-      <%= f.text_field :name, class: 'form-control', placeholder: 'グループ名' %>
-    </div>
-    <div class="form_group">
-      <label>グループ紹介</label>
-      <%= f.text_area :introduction, class: 'form-control', rows: 3, placeholder: 'グループ紹介をお願いします' %>
-    </div>
-    <div class="form_group">
-      <label>グループ画像</label>
-      <%= f.file_field :group_image, accept: 'image/jpeg, image/png, image/webp', class: 'form-control-file' %>
-    </div>    
+      <% if @group.errors.any? %>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      <% end %>
 
-    <!-- 新規作成かどうかを判定。newグループ作成、editグループ更新 -->
-    <% if group.new_record? %>
-      <%= f.submit 'グループ作成', class: 'btn btn-success' %>
-    <% else %>
-      <%= f.submit 'グループ更新', class: 'btn btn-success' %>
-      <%= link_to 'グループ削除', group_path(group.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
-    <% end %>
-  <% end %>
+      <%= form_with model: group do |f| %>
+        <div class='form_group mb-3'>
+          <%= f.label :category_id, 'Category', class: 'form-label' %>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, { prompt: '選択してください' }, { class: 'form-control' }) %>
+        </div>
+
+        <div class='form_group mb-3'>
+          <%= f.label :name, 'Group Name', class: 'form-label' %>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'グループ名' %>
+        </div>
+
+        <div class='form_group mb-3'>
+          <%= f.label :introduction, 'Introduction', class: 'form-label' %>
+          <%= f.text_area :introduction, class: 'form-control', rows: 3, placeholder: 'グループ紹介をお願いします' %>
+        </div>
+
+        <div class='form_group mb-3'>
+          <%= f.label :group_image, 'Group Image', class: 'form-label' %>
+          <%= f.file_field :group_image, accept: 'image/jpeg, image/png, image/webp', class: 'form-control-file' %>
+        </div>    
+
+        <!-- 新規作成かどうかを判定 -->
+        <% if group.new_record? %>
+          <%= f.submit 'Create Group', class: 'btn btn-outline-secondary w-100 mt-3' %>
+        <% else %>
+          <div class='d-flex justify-content-center mt-4'>
+            <%= f.submit 'Update Group', class: 'btn btn-outline-secondary w-50 mt-3' %>
+            <%= link_to 'Delete Group', group_path(group.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-outline-danger w-50 mt-3' %>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
 </div>

@@ -1,36 +1,35 @@
 <div class='container mt-5'>
   <div class='row justify-content-center'>
-    <div class='col-lg-6 col-md-6 col-sm-8'>
-      <div class='card bg-warning shadow-sm'>
-        <div class='card-body'>
-          <h2 class='text-center mb-4'>ログイン</h2>
+    <div class='col-lg-4 col-md-4 col-sm-8'>
 
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class='mb-3'>
-              <%= f.label :email, 'メールアドレス', class: 'form-label' %>
-              <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-            </div>
+      <h1 class='text-center mb-4 border-bottom'>Log In</h1>
 
-            <div class='mb-3'>
-              <%= f.label :password, 'パスワード', class: 'form-label' %>
-              <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
-            </div>
-
-            <% if devise_mapping.rememberable? %>
-              <div class='mb-3 form-check'>
-                <%= f.check_box :remember_me, class: 'form-check-input' %>
-                <%= f.label :remember_me, class: 'form-check-label' %>
-              </div>
-            <% end %>
-
-            <div class='d-grid'>
-              <%= f.submit 'ログイン', class: 'btn btn-primary' %>
-            </div>
-          <% end %>
-
-          <%= render 'member/shared/links' %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class='mb-3'>
+          <%= f.label :email, 'E-Mail', class: 'form-label' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
         </div>
-      </div>
+
+        <div class='mb-3'>
+          <%= f.label :password, 'PassWord', class: 'form-label' %>
+          <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class='mb-3 form-check'>
+            <%= f.check_box :remember_me, class: 'form-check-input' %>
+            <%= f.label :remember_me, class: 'form-check-label' %>
+          </div>
+        <% end %>
+
+        <div class='d-flex justify-content-center'>
+          <%= f.submit 'Log In', class: 'btn btn-outline-secondary w-50' %>
+        </div>
+
+      <% end %>
+
+      <%= render 'member/shared/links' %>
+
     </div>
   </div>
 </div>

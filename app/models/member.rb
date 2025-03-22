@@ -16,40 +16,41 @@ class Member < ApplicationRecord
   enum gender: { unspecified: 0, female: 1, male: 2 }
 
   validates :nickname, presence: true, length: { in: 1..20 }
+  validates :password, format: { with: /\A\d{6}\z/, message: 'パスワードは6桁の数字で入力してください' }, on: :create
 
   def active_for_authentication?
     super && (is_active == true)
   end
   
-  def get_profile_image
+  def get_profile_image(weight,height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/default.png')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.png')
     end
-      profile_image.variant(resize_to_limit: [300, 200]).processed
+    # variantはmember modelのupdateがかかる
+      profile_image.variant(resize_to_limit: [weight,height]).processed
   end
   
   def age_group
     # 未設定はnilを返す
     return nil unless birth_year
-  
-    age = Date.today.year - birth_year
+
+    year = birth_year.to_i
+    age = Date.today.year - year
   
     case age
-    when 0..9
-      "10歳未満"
     when 10..19
-      "10代"
+      "10's"
     when 20..29
-      "20代"
+      "20's"
     when 30..39
-      "30代"
+      "30's"
     when 40..49
-      "40代"
+      "40's"
     when 50..59
-      "50代"
+      "50's"
     else
-      "60代以上"
+      "Over 60's"
     end
   end
   

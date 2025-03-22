@@ -16,6 +16,7 @@ class Member::CommentsController < ApplicationController
     @comment = current_member.comments.new(comment_params)
     @comment.post_id = post.id
     if @comment.save
+      flash[:notice] = 'コメントしました！'
       redirect_to group_path(group.id)
     else
       flash[:alert] = 'コメントに失敗しました。'

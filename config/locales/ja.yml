@@ -15,6 +15,11 @@ ja:
               taken: 'このメールアドレスはすでに使用されています'
             password:
               blank: 'パスワードを入力してください'
+              too_short: 'パスワードは6文字で入力してください'
+              too_long: 'パスワードは6文字で入力してください'
+              wrong_length: 'パスワードは6文字で入力してください'
+            password_confirmation:
+              confirmation: 'パスワードが一致しません'
             nickname:
               blank: 'ニックネームを入力してください'
               too_short: 'ニックネームは%{count}文字以上で入力してください'

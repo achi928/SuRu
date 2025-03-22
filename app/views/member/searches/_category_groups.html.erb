@@ -1,0 +1,10 @@
+<% groups.each do |group| %>
+  <div class='col-12 col-md-6 col-lg-4 mt-2'>
+    <div class='rounded shadow custom_back'>
+      <%= link_to infomation_path(group.id), class: 'text-dark', style: 'text-decoration: none;' do %>
+        <%= image_tag group.get_group_image(400, 200), class: 'img-fluid w-100' %><br>
+        <h3 class='text-center border-top py-3'>\ <%= group.name %> /</h3>
+      <% end %>
+    </div>
+  </div>
+<% end %>

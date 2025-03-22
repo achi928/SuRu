@@ -11,6 +11,8 @@ ja:
       category:
         name: 'カテゴリー'
       member: 'メンバー'
+      post:
+        content: '内容'
   errors:
     messages:
       not_saved: '保存に失敗しました。入力内容を確認してください。'

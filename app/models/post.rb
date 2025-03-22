@@ -7,9 +7,9 @@ class Post < ApplicationRecord
 
   validates :content, presence: true
 
-  def get_post_image
+  def get_post_image(weight,height)
     if post_image.attached?
-      post_image.variant(resize_to_limit: [300, 200]).processed
+      post_image.variant(resize_to_limit: [weight, height]).processed
     else
       nil
     end
