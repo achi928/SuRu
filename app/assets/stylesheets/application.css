@@ -82,8 +82,18 @@ body {
   height: 100%;
 }
 
+#calendar {
+  background-color: #f9f9f9; /* お好みの色に */
+  padding: 20px;             /* カレンダー周囲に余白つけたい時 */
+  border-radius: 8px;        /* 角丸にしたい時（お好みで） */
+}
+
 .fc-event-time{
   display: none;
+}
+
+footer{
+  background-color: #f5f5f7;
 }
 
 @media (max-width: 768px) {

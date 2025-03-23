@@ -1,16 +1,11 @@
-<div class='simple-back'>
-  <div class='container mt-2'>
+<div class='container mt-2'>
 
-    <!-- 検索フォーム -->
-    <div class='d-flex justify-content-end mb-4'>
-      <%= render 'search_form' %>
-    </div>
-
-    <h1 class='border-bottom pb-3 mb-3 text-center'>Search Results</h1>
-    <%= link_to '＋New Group', new_group_path, class: 'btn btn-outline-primary btn-lg mb-3' %>
-
-    <div class='row d-flex justify-content-center'>
-      <%= render 'member/category/groups', groups: @search_groups %>
-    </div>
+  <!-- 検索フォーム -->
+  <div class='d-flex justify-content-end mb-4'>
+    <%= render 'search_form' %>
   </div>
+
+  <!-- グループ -->
+  <%= render 'member/categories/groups', title: 'Search Results', groups: @search_groups %>
+  
 </div>
