@@ -5,15 +5,31 @@ class Member::MembershipsController < ApplicationController
   def create
     group = Group.find(params[:group_id])
     membership = Membership.find_by(member_id: current_member.id, group_id: group.id)
+  
     if membership
-      membership.update(is_active: true)
-      flash[:notice] = '入会しました'
-    else
-      membership = Membership.create!(group_id: group.id, member_id: current_member.id)
-      flash[:alert] = '入会に失敗しました'
+      if membership.update(is_active: true)
+        flash[:notice] = '再入会しました！'
+        redirect_to group_path(group.id)
+      else
+        flash[:alert] = '再入会に失敗しました'
+        redirect_to infomation_path(group.id)
+      end
+  
+    elsif membership.nil?
+      new_membership = Membership.new(group_id: group.id, member_id: current_member.id)
+  
+      if new_membership.save
+        flash[:notice] = '入会しました！'
+        redirect_to group_path(group.id)
+      else
+        flash[:alert] = '入会に失敗しました'
+        redirect_to infomation_path(group.id)
+      end
     end
-    redirect_to group_path(group.id)
+  
+    
   end
+  
 
   def withdraw
     membership = Membership.find(params[:id])
