@@ -43,7 +43,7 @@ body {
   height: 100vh;
   background-size: cover;
   font-family: 'Gill Sans', sans-serif;
-  background-image: url('/assets/back.png');
+  background-image: image_url('/assets/back.png');
   background-position: center center;
   width: 100%;
 }
