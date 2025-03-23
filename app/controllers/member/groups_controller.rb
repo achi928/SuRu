@@ -24,12 +24,7 @@ class Member::GroupsController < ApplicationController
     @membership = Membership.find_by(group_id: @group.id, member_id: current_member.id)
     @post = Post.new
     @posts = @group.posts
-    @new_posts = @posts
-      .left_joins(:likes)
-      .left_joins(:comments)
-      .includes(member: :memberships)
-      .select("posts.*, COUNT(DISTINCT likes.id) AS likes_count, COUNT(DISTINCT comments.id) AS comments_count")
-      .group("posts.id")
+    @new_posts = @posts.left_joins(:likes).left_joins(:comments).includes(member: :memberships).select("posts.*, COUNT(DISTINCT likes.id) AS likes_count, COUNT(DISTINCT comments.id) AS comments_count").group("posts.id")
   end
 
   def infomation
