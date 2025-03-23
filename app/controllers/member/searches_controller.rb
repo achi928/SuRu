@@ -1,4 +1,5 @@
 class Member::SearchesController < ApplicationController
+  before_action :authenticate_member!
 
   def search
     word = params[:word].to_s.strip # to_s は空文字が送られてきた時用

@@ -16,6 +16,7 @@ class Member::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      flash.now[:notice] = '投稿の編集をしました'
       redirect_to group_path(@group.id)
     else
       flash.now[:alert] = '投稿の編集に失敗しました'

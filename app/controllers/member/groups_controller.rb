@@ -45,15 +45,19 @@ class Member::GroupsController < ApplicationController
       redirect_to infomation_path(@group.id)
       
     else
-      flash.now[:notice] = 'グループの編集に失敗しました'
+      flash.now[:alert] = 'グループの編集に失敗しました'
       render :edit
     end
   end
 
   def destroy
-    @group.destroy
-    flash[:notice] = 'グループを削除しました'
-    redirect_to mypage_path
+    if @group.destroy
+      flash[:notice] = 'グループを削除しました'
+      redirect_to mypage_path
+    else
+      flash[:alert] = 'グループの削除に失敗しました'
+      redirect_to infomation_path(@group.id)
+    end
   end
   
   

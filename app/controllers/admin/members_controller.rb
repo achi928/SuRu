@@ -5,6 +5,10 @@ class Admin::MembersController < ApplicationController
     @member = Member.includes(:comments).find(params[:id])
   end
 
+  def index
+    @members = Member.all.page(params[:page])
+  end
+
   def withdraw
     @member = Member.find(params[:id])
     if @member.update(is_active: false)

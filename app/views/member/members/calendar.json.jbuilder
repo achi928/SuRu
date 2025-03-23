@@ -1,5 +1,5 @@
-json.array!(@posts) do |schedule|
-  json.id schedule.id
-  json.title schedule.content
-  json.start schedule.created_at.in_time_zone('Tokyo')
+json.array!(@posts) do |post|
+  json.id post.id
+  json.title post.content
+  json.start post.created_at.in_time_zone('Tokyo')
 end

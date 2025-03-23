@@ -28,8 +28,7 @@ Rails.application.routes.draw do
       resources :likes, only: [:create]
     end
     
-    resources :categories, only: [:index]
-    get 'categories/:id/groups', to: 'categories#groups', as: 'category_groups'
+    resources :categories, only: [:index, :show]
 
     resources :members, only: [:show]
     get 'mypage', to: 'members#mypage'
@@ -43,10 +42,12 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
   namespace :admin do
-    root to: 'homes#top'
+    root to: 'members#index'
     patch 'withdraw/:id', to: 'members#withdraw', as: 'withdraw'
-    get 'members/search', to: 'members#search'
-    resources :members, only: [:show] do
+    get 'group/search', to: 'searches#search_group'
+    get 'member/search', to: 'searches#search_member'
+
+    resources :members, only: [:index, :show] do
       resources :comments, only: [:index, :destroy]
     end
     resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]

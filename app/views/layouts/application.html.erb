@@ -39,7 +39,6 @@
                 <li class='nav-item'><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
 
               <% else %>
-                <li class='nav-item'><%= link_to 'About', about_path, class: 'nav-link' %></li>
                 <li class='nav-item'><%= link_to 'Sign Up', new_member_registration_path, class: 'nav-link' %></li>
                 <li class='nav-item'><%= link_to 'Log In', new_member_session_path, class: 'nav-link fs-4' %></li>
               <% end %>
@@ -51,9 +50,20 @@
     </header>
 
     <% flash.each do |key, message| %>
-      <div class='flash flash-<%= key %>'><%= message %></div>
+      <% bootstrap_class = case key.to_s %>
+        <% when 'notice' then 'info' %>
+        <% when 'alert' then 'danger' %>
+        <% else 'info' %>
+      <% end %>
+    
+      <div class='alert alert-<%= bootstrap_class %> alert-dismissible' role='alert'>
+        <%= message %>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
     <% end %>
-
+  
     <%= yield %>
 
   </body>

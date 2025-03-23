@@ -5,7 +5,12 @@ class Member::SessionsController < Devise::SessionsController
   before_action :reject_inactive_member, only: [:create]
 
   def after_sign_in_path_for(resource)
-    mypage_path
+    if resource.memberships.active.exists?
+      mypage_path
+    else
+      categories_path
+      flash[:notice] = 'ログインしました！気になるグループを探してみましょう！'
+    end
   end
 
   def after_sign_out_path_for(resource)
