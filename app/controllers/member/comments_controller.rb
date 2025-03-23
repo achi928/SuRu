@@ -13,7 +13,7 @@ class Member::CommentsController < ApplicationController
   def create
     group = @post.group
     @comment = current_member.comments.new(comment_params)
-    @comment.post_id = post.id
+    @comment.post_id = @post.id
     if @comment.save
       flash[:notice] = 'コメントしました！'
       redirect_to group_path(group.id)
