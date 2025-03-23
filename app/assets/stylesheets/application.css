@@ -13,3 +13,93 @@
  *= require_tree .
  *= require_self
  */
+
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header{
+  width: 100%;
+}
+
+ .bg-custom {
+  background-color: #f9f5f0;
+}
+
+ .navbar-brand-logo{
+  height: 50px;
+  width: auto;
+}
+
+.nav-item{
+  font-size: 1.25rem;
+  margin-right: 15px;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-size: cover;
+  font-family: 'Gill Sans', sans-serif;
+  background-image: url('/assets/back.png');
+  background-position: center center;
+  width: 100%;
+}
+
+.custom-font {
+  font-weight: 700;
+}
+
+.border-brown {
+  border-color: #8B4513 
+}
+
+.custom_back{
+  background-color: #f5ede2;
+}
+
+.what{
+  background-color: #f9f5f0;
+}
+
+.category{
+  background-color: #f9f5f0;
+}
+
+.reviews{
+  background-color: #e4d0ad
+}
+
+.badge-red { background-color: #ff4b4b; color: white; }
+.badge-orange { background-color: #ff9900; color: white; }
+.badge-yellow { background-color: #ffcc00; color: white; }
+
+.simple-back{
+  background-image: none !important;
+  background-color: #e9bb91;
+  height: 100%;
+}
+
+#calendar {
+  background-color: #f9f9f9; /* お好みの色に */
+  padding: 20px;             /* カレンダー周囲に余白つけたい時 */
+  border-radius: 8px;        /* 角丸にしたい時（お好みで） */
+}
+
+.fc-event-time{
+  display: none;
+}
+
+footer{
+  background-color: #f5f5f7;
+}
+
+@media (max-width: 768px) {
+  .simple-back{
+    background-image: none !important;
+    background-color: #e9bb91;
+    height: 100%;
+  }
+}

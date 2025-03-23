@@ -1,0 +1,44 @@
+<div class='container mt-3'>
+  <div class='row justify-content-center'>
+    <div class='col-12 text-center'>
+
+      <%= image_tag @group.get_group_image(400, 200), class: 'img-fluid mb-3' %>
+      <h1 class='text-center mb-4 border-bottom'><%= @group.name %></h1>
+      <p class='mb-2'>
+        【 <%= @group.category.name %> 】
+        <%= @group.introduction %>
+      </p>
+
+      <p class='mb-3'><strong>Owner:</strong> <%= @group.owner.nickname %></p>
+
+      <div class="d-flex align-items-center justify-content-center mt-3">
+        <!-- 編集ボタン（オーナーのみ） -->
+        <% if @group.owner.id == current_member.id %>
+          <%= link_to 'Edit Group', edit_group_path(@group.id), class: 'btn btn-outline-dark mr-2' %>
+        <% end %>
+      
+        <!-- 参加状況 -->
+        <% if current_member.memberships.active.where(group_id: @group.id).exists? %>
+          <%= link_to 'Joined▶︎', group_path(@group.id), class: 'btn btn-outline-info' %>
+        <% elsif @group.memberships.active.count >= 5 %>
+          <p class='text-danger border border-danger px-3 py-1 shadow'>Group Full</p>
+        <% else %>
+          <%= link_to 'Become a Member！', group_memberships_path(@group.id), method: :post, class: 'btn btn-outline-info' %>
+        <% end %>
+      </div>
+    
+      <!-- メンバー一覧 -->
+      <h2 class='mt-4 mb-3'>Menber</h2>
+      <div class='d-flex flex-wrap justify-content-center mb-4'>
+        <% @group.memberships.active.each do |membership| %>
+          <%= link_to member_path(membership.member.id) do %>
+            <%= image_tag membership.member.get_profile_image(150, 150), class: 'rounded-circle border shadow' %>
+          <% end %>
+        <% end %>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

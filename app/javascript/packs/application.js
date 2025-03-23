@@ -7,6 +7,11 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+import './calendar'; // 追加
+
+
 
 import "jquery";
 import "popper.js";

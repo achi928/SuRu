@@ -1,26 +1,35 @@
-<h2>ログイン</h2>
+<div class='container mt-5'>
+  <div class='row justify-content-center'>
+    <div class='col-lg-4 col-md-4 col-sm-8'>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <h1 class='text-center mb-4 border-bottom'>Log In</h1>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class='mb-3'>
+          <%= f.label :email, 'E-Mail', class: 'form-label' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class='mb-3'>
+          <%= f.label :password, 'PassWord', class: 'form-label' %>
+          <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class='mb-3 form-check'>
+            <%= f.check_box :remember_me, class: 'form-check-input' %>
+            <%= f.label :remember_me, class: 'form-check-label' %>
+          </div>
+        <% end %>
+
+        <div class='d-flex justify-content-center'>
+          <%= f.submit 'Log In', class: 'btn btn-outline-secondary w-50' %>
+        </div>
+
+      <% end %>
+
+      <%= render 'member/shared/links' %>
+
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
-
-<%= render "member/shared/links" %>
+</div>

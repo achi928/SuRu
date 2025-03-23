@@ -25,8 +25,7 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-    models:
-      member: メンバー
+        nickname: ニックネーム
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -37,7 +36,7 @@ ja:
     failure:
       already_authenticated: すでにログインしています。
       inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
-      invalid: "%{authentication_keys}またはパスワードが違います。"
+      invalid: メールアドレスまたはパスワードが違います。
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントはロックされています。
       not_found_in_database: "%{authentication_keys}またはパスワードが違います。"

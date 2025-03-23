@@ -5,8 +5,8 @@ class Member::CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def groups
+  def show
     @category = Category.find(params[:id])
+    @category_groups = @category.groups
   end
-
 end

@@ -1,22 +1,24 @@
-<div class = 'container mt-5'>
-  <%= form_with url: groups_search_path, method: :get do |f| %>
-    <%= f.text_field :word %>
-    <%= f.submit '検索', class: 'btn btn-success' %>
-  <% end %>
 
-  <%= link_to 'グループ作成', new_group_path, class: 'btn btn-warning' %>
-  <h3 class = 'fw-bold border-bottom pb-3 mb-5 text-center'>カテゴリー一覧・追加</h3>
+  <div class='container mt-2'>
+    <!-- 検索フォーム -->
+    <div class="d-flex justify-content-end mb-4">
+      <%= render 'member/searches/search_form' %>
+    </div>
 
-  <div class = 'row justify-content-center'>
-    <% @categories.each do |category| %>
-      <div class = 'col-6 col-md-4 mb-4 col-lg-3 text-center'>
-        <%= link_to category_groups_path(category.id), class: 'd-block' do %>
-          <%= image_tag category.get_category_image, class: 'category-image mb-2', style: 'object-fit: cover;' %>
-          <%= category.name %>
-        <% end %>
-      </div>
-    <% end %>
+    <h1 class='border-bottom pb-3 mb-3 text-center'>Category</h1>
+    <%= link_to '＋New Group', new_group_path, class: 'btn btn-outline-primary btn-lg' %>
+
+    <div class='row d-flex justify-content-center'>
+      <% @categories.each do |category| %>
+        <div class='col-6 col-md-3 mt-2'>
+          <div class='rounded shadow custom_back'>
+            <%= link_to category_path(category.id), class: 'd-block text-dark', style: 'text-decoration: none;' do %>
+              <%= image_tag category.get_category_image(600, 300), class: 'img-fluid w-100' %>
+              <h4 class='text-center border-top pt-2 pb-2'><%= category.name %></h4>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
   </div>
-</div>
-
-</div>

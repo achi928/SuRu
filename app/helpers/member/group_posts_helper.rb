@@ -1,2 +1,0 @@
-module Member::GroupPostsHelper
-end

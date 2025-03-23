@@ -4,6 +4,19 @@ class Member::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_inactive_member, only: [:create]
 
+  def after_sign_in_path_for(resource)
+    if resource.memberships.active.exists?
+      mypage_path
+    else
+      categories_path
+      flash[:notice] = 'ログインしました！気になるグループを探してみましょう！'
+    end
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
@@ -25,14 +38,6 @@ class Member::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-  def after_sign_in_path_for(resource)
-    mypage_path
-  end
-
-  def after_sign_out_path_for(resource)
-    root_path
-  end
   
   private
 

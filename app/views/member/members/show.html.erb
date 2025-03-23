@@ -1,19 +1,24 @@
-<h1>グループメンバー情報</h1>
+<div class='container mt-5'>
+  <div class='row justify-content-center'>
+    <div class='col-lg-4 col-md-6 col-sm-8'>
 
-<%= image_tag @member.get_profile_image %>
-<table class = "index-table">
-  <tbody>
-    <tr>
-      <th>ニックネーム</th>
-      <th><%= @member.nickname %></th>
-    </tr>
-    <tr>
-      <th>性別</th>
-      <th><%= @member.gender_i18n %></th>
-    </tr>
-    <tr>
-      <th>年代</th>
-      <th><%= @member.age_group %></th>
-    </tr>
-  </tbody>
-</table>
+      <div class='d-flex justify-content-center mb-3'>
+        <%= image_tag @member.get_profile_image(150, 150) %>
+      </div>
+
+      <h3 class='text-center font-weight-bold mb-2'><%= @member.nickname %></h3>
+
+      <div class='d-flex justify-content-around mt-3'>
+        <div class='px-3 py-2 border rounded bg-light text-center w-50 mx-1'>
+          <span class='text-muted small'>Gender</span><br>
+          <strong><%= @member.gender_i18n %></strong>
+        </div>
+        <div class='px-3 py-2 border rounded bg-light text-center w-50 mx-1'>
+          <span class='text-muted small'>Age Group</span><br>
+          <strong><%= @member.age_group %></strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

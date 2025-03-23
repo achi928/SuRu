@@ -1,11 +1,11 @@
 <div class='container mt-4'>
-  <h2 class='fw-bold text-center border-bottom pb-2 mb-4'>
+  <h2 class='text-center border-bottom pb-2 mb-4'>
     <%= @member.nickname %> の会員詳細
   </h2>
 
   <div class='row justify-content-center'>
     <div class='col-12 col-md-8'>
-      <table class='table'>
+      <table class='table bg-white shadow-sm'>
         <tbody>
           <tr>
             <th>会員ID</th>
@@ -20,7 +20,7 @@
             <td>
               <%= @member.is_active ? '有効' : '退会済' %>
             </td>
-            <td class='text-end'>
+            <td>
             <% if @member.is_active %>
               <%= link_to '退会', admin_withdraw_path(@member.id), method: :patch, class: 'btn btn-danger btn-sm' %>
             <% end %>
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <th>コメント一覧</th>
-            <td colspan='2'>
+            <td colspan='2' class='text-center'>
               <% @member.comments.each do |comment| %>
                 <div class='d-flex justify-content-between '>
                   <%= comment.content %>

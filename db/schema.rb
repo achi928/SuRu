@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_03_04_113119) do
+ActiveRecord::Schema.define(version: 2025_03_14_081114) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,15 +60,7 @@ ActiveRecord::Schema.define(version: 2025_03_04_113119) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "member_id", null: false
-    t.integer "group_post_id", null: false
-    t.string "content", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "group_posts", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "group_id", null: false
+    t.integer "post_id", null: false
     t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -85,7 +77,7 @@ ActiveRecord::Schema.define(version: 2025_03_04_113119) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "member_id", null: false
-    t.integer "group_post_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -110,6 +102,14 @@ ActiveRecord::Schema.define(version: 2025_03_04_113119) do
     t.integer "member_id", null: false
     t.integer "group_id", null: false
     t.boolean "is_active", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "group_id", null: false
+    t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

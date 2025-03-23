@@ -1,0 +1,11 @@
+<div class='container mt-2'>
+
+  <!-- 検索フォーム -->
+  <div class='d-flex justify-content-end mb-4'>
+    <%= render 'search_form' %>
+  </div>
+
+  <!-- グループ -->
+  <%= render 'member/categories/groups', title: 'Search Results', groups: @search_groups %>
+  
+</div>

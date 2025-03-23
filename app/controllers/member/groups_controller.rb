@@ -1,6 +1,7 @@
 class Member::GroupsController < ApplicationController
   before_action :authenticate_member!
   before_action :owner?, only: [:update, :edit, :destroy]
+  before_action :active_membership?, only: [:show]
 
   def new
     @group = Group.new
@@ -12,15 +13,26 @@ class Member::GroupsController < ApplicationController
     if @group.save
       membership = Membership.create!(group_id: @group.id, member_id: current_member.id)
       flash[:notice] = 'グループを作成しました！'
-      redirect_to group_my_membership_path(@group.id, current_member.id)
+      redirect_to group_path(@group.id)
     else
       flash.now[:alert] = 'グループの作成に失敗しました'
       render :new
     end
   end
-  
 
   def show
+    @membership = Membership.find_by(group_id: @group.id, member_id: current_member.id)
+    @post = Post.new
+    @posts = @group.posts
+    @new_posts = @posts
+      .left_joins(:likes)
+      .left_joins(:comments)
+      .includes(member: :memberships)
+      .select("posts.*, COUNT(DISTINCT likes.id) AS likes_count, COUNT(DISTINCT comments.id) AS comments_count")
+      .group("posts.id")
+  end
+
+  def infomation
     @group = Group.find(params[:id])
   end
 
@@ -29,29 +41,26 @@ class Member::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to group_path(@group.id)
       flash[:notice] = 'グループを編集しました！'
+      redirect_to infomation_path(@group.id)
+      
     else
-      flash.now[:notice] = 'グループの作成に失敗しました'
+      flash.now[:alert] = 'グループの編集に失敗しました'
       render :edit
     end
   end
 
   def destroy
-    @group.destroy
-    flash[:notice] = 'グループを削除しました'
-    redirect_to mypage_path
-  end
-  
-  def search
-    word = params[:word].to_s.strip # to_s は空文字が送られてきた時用
-    if word.present? # wordが存在、空じゃないか
-      @search_groups = Group.where('name LIKE ?', "%#{word}%").page(params[:page])
+    if @group.destroy
+      flash[:notice] = 'グループを削除しました'
+      redirect_to mypage_path
     else
-      @search_groups = Group.none
+      flash[:alert] = 'グループの削除に失敗しました'
+      redirect_to infomation_path(@group.id)
     end
   end
-
+  
+  
   private
 
   def group_params
@@ -61,7 +70,14 @@ class Member::GroupsController < ApplicationController
   def owner?
     @group = Group.find(params[:id])
     unless @group.owner_id == current_member.id
-      redirect_to group_path(@group.id)
+      redirect_to infomation_path(@group.id)
+    end
+  end
+
+  def active_membership?
+    @group = Group.find(params[:id])
+    unless @group.memberships.active.exists?(member_id: current_member.id)
+      redirect_to mypage_path
     end
   end
 

@@ -1,32 +1,29 @@
-<div class = 'container mt-4'>
-  <div class = 'row justify-content-center'>
-    <div class = 'col-12 text-center'>
-      <h3 class = 'fw-bold'>グループ詳細</h3>
-    </div>
-  </div>
+<div class='container mt-4'>
+  <h2 class='text-center border-bottom pb-2 mb-4'>グループ詳細</h2>
 
-  <div class = 'row justify-content-center mt-4'>
-    <div class = 'col-md-6'>
-      <div class = 'mb-4'>
-        <span class = 'fw-bold'>カテゴリー</span><br>
-        <span><%= @group.category.name %></span>
-      </div>
-
-      <div class = 'mb-4'>
-        <span class = 'fw-bold'>グループ名</span><br>
-        <span><%= @group.name %></span>
-      </div>
-
-      <div class = 'mb-4'>
-        <span class = 'fw-bold'>グループ紹介</span><br>
-        <span><%= @group.introduction %></span>
-      </div>
-    </div>
-  </div>
-
-  <div class = 'row mt-4'>
-    <div class = 'col-12 text-center'>
-      <%= link_to '削除する', admin_group_path(@group.id), method: :delete, class: 'btn btn-danger px-4 py-2' %>
+  <div class='row justify-content-center'>
+    <div class='col-12 col-md-8'>
+      <table class='table bg-white shadow-sm'>
+        <tbody>
+          <tr>
+            <th>カテゴリー</th>
+            <td><%= @group.category.name %></td>
+          </tr>
+          <tr>
+            <th>グループ名</th>
+            <td><%= @group.name %></td>
+          </tr>
+          <tr>
+            <th>グループ紹介</th>
+            <td><%= @group.introduction %></td>
+          </tr>
+          <tr>
+            <td colspan='2' class='text-center'>
+              <%= link_to '削除する', admin_group_path(@group.id), method: :delete, class: 'btn btn-danger px-4 py-2' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

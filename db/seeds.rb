@@ -44,26 +44,26 @@ Membership.find_or_create_by(member_id: beauty_lover.id, group_id: skin_care_gro
 Membership.find_or_create_by(member_id: health_fan.id, group_id: morning_run_group.id)
 
 # Group Posts
-skin_care_post = GroupPost.find_or_create_by(member_id: beauty_lover.id, group_id: skin_care_group.id) do |post|
+skin_care_post = Post.find_or_create_by(member_id: beauty_lover.id, group_id: skin_care_group.id) do |post|
   post.content = 'What’s your favorite toner?'
 end
 
-morning_run_post = GroupPost.find_or_create_by(member_id: health_fan.id, group_id: morning_run_group.id) do |post|
+morning_run_post = Post.find_or_create_by(member_id: health_fan.id, group_id: morning_run_group.id) do |post|
   post.content = 'Ran 5km this morning!'
 end
 
 # Comments
-Comment.find_or_create_by(member_id: health_fan.id, group_post_id: skin_care_post.id) do |comment|
+Comment.find_or_create_by(member_id: health_fan.id, post_id: skin_care_post.id) do |comment|
   comment.content = 'I love rose water toner!'
 end
 
-Comment.find_or_create_by(member_id: beauty_lover.id, group_post_id: morning_run_post.id) do |comment|
+Comment.find_or_create_by(member_id: beauty_lover.id, post_id: morning_run_post.id) do |comment|
   comment.content = 'That’s amazing! Keep it up!'
 end
 
 # Likes
-Like.find_or_create_by(member_id: beauty_lover.id, group_post_id: morning_run_post.id)
-Like.find_or_create_by(member_id: health_fan.id, group_post_id: skin_care_post.id)
+Like.find_or_create_by(member_id: beauty_lover.id, post_id: morning_run_post.id)
+Like.find_or_create_by(member_id: health_fan.id, post_id: skin_care_post.id)
 
 admin = Admin.find_or_create_by(email: 'admin@example.com') do |admin|
   admin.password = '000000'
