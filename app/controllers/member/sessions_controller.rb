@@ -8,7 +8,7 @@ class Member::SessionsController < Devise::SessionsController
     if resource.memberships.active.exists?
       mypage_path
     else
-      flash[:notice] = 'ログインしました！気になるグループを探してみましょう！'
+      flash[:notice] = 'ログインしました！気になるCategoryから自分にぴったりのGroupを見つけよう！'
       categories_path
     end
   end
