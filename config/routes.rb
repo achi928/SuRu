@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     get 'member/search', to: 'searches#search_member'
 
     resources :members, only: [:index, :show] do
+      resources :posts, only: [:index, :destroy]
       resources :comments, only: [:index, :destroy]
     end
     resources :categories, only: [:new, :create, :index, :edit, :update, :destroy]
