@@ -35,8 +35,7 @@ class Member < ApplicationRecord
     # 未設定はnilを返す
     return nil unless birth_year
 
-    year = birth_year.to_i
-    age = Date.today.year - year
+    age = Date.today.year - birth_year
   
     case age
     when 10..19
