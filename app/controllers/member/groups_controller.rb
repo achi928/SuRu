@@ -27,7 +27,7 @@ class Member::GroupsController < ApplicationController
     @new_posts = @posts.left_joins(:likes).left_joins(:comments).includes(member: :memberships).select("posts.*, COUNT(DISTINCT likes.id) AS likes_count, COUNT(DISTINCT comments.id) AS comments_count").group("posts.id")
   end
 
-  def infomation
+  def information
     @group = Group.find(params[:id])
   end
 
@@ -37,7 +37,7 @@ class Member::GroupsController < ApplicationController
   def update
     if @group.update(group_params)
       flash[:notice] = 'グループを編集しました！'
-      redirect_to infomation_path(@group.id)
+      redirect_to information_path(@group.id)
       
     else
       flash.now[:alert] = 'グループの編集に失敗しました'
@@ -51,7 +51,7 @@ class Member::GroupsController < ApplicationController
       redirect_to mypage_path
     else
       flash[:alert] = 'グループの削除に失敗しました'
-      redirect_to infomation_path(@group.id)
+      redirect_to information_path(@group.id)
     end
   end
   
@@ -65,7 +65,7 @@ class Member::GroupsController < ApplicationController
   def owner?
     @group = Group.find(params[:id])
     unless @group.owner_id == current_member.id
-      redirect_to infomation_path(@group.id)
+      redirect_to information_path(@group.id)
     end
   end
 

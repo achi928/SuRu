@@ -15,14 +15,16 @@ ja:
               taken: 'このメールアドレスはすでに使用されています'
             password:
               blank: 'パスワードを入力してください'
-              too_short: 'パスワードは6文字で入力してください'
-              too_long: 'パスワードは6文字で入力してください'
-              wrong_length: 'パスワードは6文字で入力してください'
+              too_short: 'パスワードは6桁の数字で入力してください（短すぎます）'
+              too_long: 'パスワードは6桁の数字で入力してください（長すぎます）'
+              wrong_length: 'パスワードは6桁ちょうどで入力してください'
+              invalid: 'パスワードは数字のみで入力してください'
             password_confirmation:
               confirmation: 'パスワードが一致しません'
             nickname:
               blank: 'ニックネームを入力してください'
               too_short: 'ニックネームは%{count}文字以上で入力してください'
+              taken: 入力されたニックネームはすでに存在しています
         group:
           attributes:
             category:

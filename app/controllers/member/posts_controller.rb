@@ -5,8 +5,16 @@ class Member::PostsController < ApplicationController
   def create
     @post = current_member.posts.new(post_params)
     @post.group_id = @group.id
-    @post.save
-    redirect_to group_path(@group.id)
+    if @post.save
+      flash.now[:notice] = '投稿しました!'
+      redirect_to group_path(@group.id)
+    else
+      flash.now[:alert] = '投稿に失敗しました'
+      @membership = Membership.find_by(group_id: @group.id, member_id: current_member.id)
+      @posts = @group.posts
+      @new_posts = @posts.left_joins(:likes).left_joins(:comments).includes(member: :memberships).select("posts.*, COUNT(DISTINCT likes.id) AS likes_count, COUNT(DISTINCT comments.id) AS comments_count").group("posts.id")
+      render 'member/groups/show'
+    end
   end
 
   def edit

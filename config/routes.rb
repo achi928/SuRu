@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
     resources :calendars, only: [:index]
     get 'groups/search', to: 'searches#search'
-    get 'groups/:id/infomation', to: 'groups#infomation', as: 'infomation'
+    get 'groups/:id/information', to: 'groups#information', as: 'information'
 
     resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, ] do
       resources :posts, only: [:create, :show, :edit, :update]

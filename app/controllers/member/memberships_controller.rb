@@ -12,7 +12,7 @@ class Member::MembershipsController < ApplicationController
         redirect_to group_path(group.id)
       else
         flash[:alert] = '再入会に失敗しました'
-        redirect_to infomation_path(group.id)
+        redirect_to information_path(group.id)
       end
   
     elsif membership.nil?
@@ -23,7 +23,7 @@ class Member::MembershipsController < ApplicationController
         redirect_to group_path(group.id)
       else
         flash[:alert] = '入会に失敗しました'
-        redirect_to infomation_path(group.id)
+        redirect_to information_path(group.id)
       end
     end
   

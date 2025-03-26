@@ -15,8 +15,9 @@ class Member < ApplicationRecord
 
   enum gender: { unspecified: 0, female: 1, male: 2 }
 
-  validates :nickname, presence: true, length: { in: 1..20 }
-  validates :password, format: { with: /\A\d{6}\z/, message: 'パスワードは6桁の数字で入力してください' }, on: :create
+  validates :nickname, presence: true, length: { in: 1..20 }, uniqueness: true
+  # active storageに注意。variantはmember modelのupdateがかかる
+  validates :password, format: { with: /\A\d{6}\z/ }, on: :create
 
   def active_for_authentication?
     super && (is_active == true)
