@@ -18,6 +18,11 @@
         </h1>
 
         <!-- 新規投稿フォーム -->
+        <% if @post.errors.any? %>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        <% end %>
         <%= form_with model: [@group, @post] do |f| %>
           <div class='form-group'>
             <label class='form-label'>New Post</label>
