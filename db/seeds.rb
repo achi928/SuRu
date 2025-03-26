@@ -43,7 +43,7 @@ end
 Membership.find_or_create_by(member_id: beauty_lover.id, group_id: skin_care_group.id)
 Membership.find_or_create_by(member_id: health_fan.id, group_id: morning_run_group.id)
 
-# Group Posts
+# Posts
 skin_care_post = Post.find_or_create_by(member_id: beauty_lover.id, group_id: skin_care_group.id) do |post|
   post.content = 'What’s your favorite toner?'
 end

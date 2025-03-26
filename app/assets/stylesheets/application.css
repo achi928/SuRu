@@ -38,34 +38,41 @@ header{
   margin-right: 15px;
 }
 
-body {
-  margin: 0;
-  height: 100vh;
-  background-size: cover;
-  font-family: 'Gill Sans', sans-serif;
-  background-image: url('/images/back.webp');
-  background-position: center center;
-  width: 100%;
+.top-image{
+  width: 90%;
+  margin-top: 70px;
 }
 
-.custom-font {
-  font-weight: 700;
+.custom-btn{
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
 }
 
-.border-brown {
-  border-color: #8B4513 
-}
-
-.custom_back{
-  background-color: #f5ede2;
+.app-review{
+  background-color: #e6de91;
 }
 
 .what{
-  background-color: #f9f5f0;
+  background-color: #f7dfc7;
+}
+
+.what-image{
+  width: 80%;
 }
 
 .category{
   background-color: #f9f5f0;
+}
+
+.guide{
+  background-color: #d4dcec;
+}
+
+.guide-image{
+  width: 80%;
+  margin-left: 120px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 .reviews{
@@ -90,6 +97,28 @@ body {
 
 .fc-event-time{
   display: none;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-size: cover;
+  font-family: 'Gill Sans', sans-serif;
+  background-image: url('/images/back.webp');
+  background-position: center center;
+  width: 100%;
+}
+
+.custom-font {
+  font-weight: 700;
+}
+
+.border-brown {
+  border-color: #8B4513 
+}
+
+.custom_back{
+  background-color: #f5ede2;
 }
 
 footer{
