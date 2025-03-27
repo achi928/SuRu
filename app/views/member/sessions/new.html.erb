@@ -5,6 +5,7 @@
       <h1 class='text-center mb-4 border-bottom'>Log In</h1>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render 'member/shared/error_messages', resource: resource %>
         <div class='mb-3'>
           <%= f.label :email, 'E-Mail', class: 'form-label' %>
           <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
