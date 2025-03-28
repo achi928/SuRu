@@ -65,5 +65,6 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include ActionDispatch::TestProcess::FixtureFile
-  config.include SignInModule
+
+  config.include SignInSupport
 end
