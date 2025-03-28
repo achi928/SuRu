@@ -2,10 +2,10 @@ require 'rails_helper'
 
 FactoryBot.define do
   factory :group do
-    name { Faker::Name.name }
+    name { Faker::Lorem.sentence }
     introduction { Faker::Lorem.sentence }
 
-    association :owner, factory: :member
+    association :owner
     association :category 
     
   end

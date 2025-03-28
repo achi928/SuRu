@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 FactoryBot.define do
-  factory :member do
+  factory :member, aliases: [:owner] do
 
     nickname { Faker::Name.name }
-    gender { :unspecified }
     sequence(:email) { |n| "test#{n}@sample.com" }
-    password { 'password' }
-    password_confirmation { 'password' }
+    password { '111111' }
+    password_confirmation { '111111' }
     
+  end
+
+  factory :blank_member, class: Member do
   end
 end

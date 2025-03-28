@@ -8,16 +8,15 @@ RSpec.describe Post, 'Postモデルのテスト',type: :model do
   end
 
   describe 'Postモデルのバリデーション' do
-    let(:post) { build(:post) }
-  
-    context 'contentカラム' do
-      it '空欄のときエラーメッセージが表示されること' do
-        post.content = ''
-        expect(post).to be_invalid
-        post.valid?
-        expect(post.errors[:content]).to include("を入力してください")
-      end
+    let(:post) { FactoryBot.build(:post) }
+    #post = FactoryBot.build(:post)
+
+    it '空欄のときエラーメッセージが表示されること' do
+      post.content = ''
+      expect(post).to be_invalid
+      expect(post.errors[:content]).to include('を入力してください')
     end
+    
   end
 end
   
