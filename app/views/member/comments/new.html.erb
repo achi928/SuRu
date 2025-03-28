@@ -1,8 +1,4 @@
-<% if @comment.errors.any? %>
-  <% @comment.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-<% end %>
+<%= render 'member/posts/error', object: @comment %>
 
 <div class='container mt-5'>
   <div class='row justify-content-center'>

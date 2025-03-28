@@ -18,11 +18,8 @@
         </h1>
 
         <!-- 新規投稿フォーム -->
-        <% if @post.errors.any? %>
-          <% @post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        <% end %>
+        <%= render 'member/posts/error', object: @post %>
+
         <%= form_with model: [@group, @post] do |f| %>
           <div class='form-group'>
             <label class='form-label'>New Post</label>
@@ -60,14 +57,14 @@
               <%= image_tag post.get_post_image(250,150), class: 'img-fluid mb-2' %>
             <% end %>
 
-            <!-- コメント -->
+            <!-- コメント いいね -->
             <div class='d-flex justify-content-between align-items-center'>
               <div>
                 <%= link_to "#{post.comments.count}コメント", post_comments_path(post.id), class: 'text-dark mr-3' %>
                 <%= post.likes.count %>いいね
               </div>
               <div class='text-muted small mr-4'>
-                <%= post.created_at.strftime('%m/%d %H:%M') %>
+                <%= post.created_at.strftime('%m/%d %p %I:%M') %>
               </div>
             </div>
           
@@ -94,7 +91,7 @@
                 </span>
               </div>
               <div class='text-muted small mr-4'>
-                <%= post.created_at.strftime('%m/%d %H:%M') %>
+                <%= post.created_at.strftime('%m/%d %p %I:%M') %>
               </div>
             </div>
           <% end %>
