@@ -4,7 +4,6 @@ class Member::LikesController < ApplicationController
 
   def create
     current_member.likes.create(post_id: @post.id)
-    redirect_to group_path(@group.id)
   end
 
   private

@@ -89,12 +89,9 @@
             <div class='d-flex justify-content-between align-items-center'>
               <div>
                 <%= link_to 'コメントする', new_post_comment_path(post.id), class: 'text-dark mr-3' %>
-                <%= post.likes.count %>いいね
-                <% unless post.likes.where(member_id: current_member.id).exists? %>
-                  <%= link_to '♡', post_likes_path(post.id), method: :post, class: 'text-danger' %>
-                <% else %>
-                  <strong class='text-danger'>❤︎</strong>
-                <% end %>
+                <span id="like-btn-<%= post.id %>">
+                  <%= render 'member/likes/like_btn', post: post %>
+                </span>
               </div>
               <div class='text-muted small mr-4'>
                 <%= post.created_at.strftime('%m/%d %H:%M') %>
