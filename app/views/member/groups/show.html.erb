@@ -64,7 +64,7 @@
                 <%= post.likes.count %>いいね
               </div>
               <div class='text-muted small mr-4'>
-                <%= post.created_at.strftime('%m/%d %p %I:%M') %>
+                <%= post.created_at.in_time_zone('Tokyo').strftime('%m/%d %p %I:%M') %>
               </div>
             </div>
           
@@ -91,7 +91,7 @@
                 </span>
               </div>
               <div class='text-muted small mr-4'>
-                <%= post.created_at.strftime('%m/%d %p %I:%M') %>
+                <%= post.created_at.in_time_zone('Tokyo').strftime('%m/%d %p %I:%M') %>
               </div>
             </div>
           <% end %>
