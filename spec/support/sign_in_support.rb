@@ -5,4 +5,9 @@ module SignInSupport
     fill_in "PassWord", with: member.password
     click_button "Log In"
   end
+
+  def setup_current_member
+    let(:member)
+    let(:)
+  end
 end
