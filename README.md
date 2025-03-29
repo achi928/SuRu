@@ -27,7 +27,7 @@
 ## 設計書
 - ER図
 - UI Flows
-- テーブル定義書
+- テーブル定義書[リンク](https://docs.google.com/spreadsheets/d/1NE0FUC1XkZhQnUSlpCnsnP0iomoIsRFS0N7GKi6gf7U/edit?usp=drive_link)
 - アプリケーション詳細設計書
 
 ## 開発環境
