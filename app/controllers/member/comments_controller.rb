@@ -24,7 +24,6 @@ class Member::CommentsController < ApplicationController
   end
 
   def index
-    @post = Post.find(params[:post_id])
     @comments = @post.comments
     unless current_member.id == @post.member.id
       redirect_to mypage_path
