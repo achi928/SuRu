@@ -26,6 +26,7 @@
 
 ## 設計書
 - ER図
+![ SuRu ER](https://assets/images/ER.png)
 - UI Flows[(リンク)](https://docs.google.com/spreadsheets/d/1iNE5O0pF0a7ndI48kSybQE_YSv32P5vREa2o03fOozk/edit?usp=drive_link)
 - テーブル定義書[(リンク)](https://docs.google.com/spreadsheets/d/1NE0FUC1XkZhQnUSlpCnsnP0iomoIsRFS0N7GKi6gf7U/edit?usp=drive_link)
 - アプリケーション詳細設計書[(リンク)](https://drive.google.com/file/d/1azhFtkB7Izum6y55pyQ6YRJi79s3RNav/view?usp=drive_link)
