@@ -30,6 +30,11 @@ ja:
             category:
               required: 'の入力が必須です'
 
+  devise:
+    failure:
+      member:
+        not_found_in_database: "メールアドレスまたはパスワードが違います。"
+
   date:
     abbr_day_names:
     - 日

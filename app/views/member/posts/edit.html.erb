@@ -3,13 +3,7 @@
     <div class='col-lg-4 col-md-4 col-sm-8'>
       <h1 class='text-center mb-4 border-bottom'>Edit Post</h1>
 
-      <% if @post.errors.any? %>
-        <ul>
-          <% @post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <%= render 'error', object: @post %>
 
       <%= form_with model: [@group, @post], method: :patch do |f| %>
         <div class='form_group mb-3'>

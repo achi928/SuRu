@@ -14,7 +14,7 @@ nicknames = ['mitoma', 'karina', 'sakura', 'winter', 'ninnin', 'kamata', 'poo', 
 32.times do |i|
   number = format('%06d', i + 1)
   
-  Member.find_or_create_by(email: "test#{i + 1}@example.com") do |member|
+  members = Member.find_or_create_by(email: "test#{i + 1}@example.com") do |member|
     member.nickname = nicknames[i]
     member.birth_year = rand(1965..2014)
     member.gender = rand(0..2)
@@ -23,6 +23,7 @@ nicknames = ['mitoma', 'karina', 'sakura', 'winter', 'ninnin', 'kamata', 'poo', 
   end
   puts member.nickname
   puts member.password
+
 end
 
 

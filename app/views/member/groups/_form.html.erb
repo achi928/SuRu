@@ -7,11 +7,7 @@
         <%= group.new_record? ? 'New Group' : 'Edit Group' %>
       </h1>
 
-      <% if @group.errors.any? %>
-        <% @group.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      <% end %>
+      <%= render 'member/posts/error', object: @group %>
 
       <%= form_with model: group do |f| %>
         <div class='form_group mb-3'>
