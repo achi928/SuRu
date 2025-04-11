@@ -42,6 +42,9 @@
 - データベース：MySQL
 - バージョン管理：Git / GitHub
 - デプロイ：AWS（EC2）
+
+## AWS構成図
+![ SuRu AWS](app/assets/images/cloud.png)
 ​
 ## 使用素材
 著作権を考慮し、架空のデータを扱う予定です。
