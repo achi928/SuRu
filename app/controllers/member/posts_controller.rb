@@ -6,7 +6,7 @@ class Member::PostsController < ApplicationController
     @post = current_member.posts.new(post_params)
     @post.group_id = @group.id
     if @post.save
-      flash.now[:notice] = '投稿しました!'
+      flash[:notice] = '投稿しました!'
       redirect_to group_path(@group.id)
     else
       flash.now[:alert] = '投稿に失敗しました'

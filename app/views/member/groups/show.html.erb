@@ -23,7 +23,7 @@
         <%= form_with model: [@group, @post] do |f| %>
           <div class='form-group'>
             <%= f.label :content, 'New Post', class: 'form-label' %>
-            <%= f.text_area :content, class: 'form-control', id: 'new_post' %>
+            <%= f.text_area :content, class: 'form-control' %>
           </div>
           <div class='form-group'>
             <%= f.label :post_image, 'Add a Photo', class: 'form-label' %>

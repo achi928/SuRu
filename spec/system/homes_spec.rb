@@ -5,7 +5,7 @@ RSpec.describe 'Homes', type: :system do
     before do 
       visit root_path
     end
-    context '表示、リンクの確認' do
+    context 'リンクの確認' do
       it 'root_pathが"/"であるか' do
         expect(current_path).to eq('/')
       end

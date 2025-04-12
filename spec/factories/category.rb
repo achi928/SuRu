@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :category do
 
-    name { Faker::Lorem.word }
+    name { '美容' }
     
   end
 end

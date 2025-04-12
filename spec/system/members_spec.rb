@@ -14,9 +14,8 @@ RSpec.describe 'Members', type: :system do
 
     context 'グループに所属していた時' do
       let(:group) { FactoryBot.create(:group) }
-      let(:membership) { FactoryBot.create(:membership, member: member, group: group) }
+      let!(:membership) { FactoryBot.create(:membership, member: member, group: group) }
       it 'マイページへ遷移する' do
-        membership
         sign_in(member)
         expect(current_path).to eq mypage_path
       end
