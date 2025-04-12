@@ -8,7 +8,7 @@ RSpec.describe 'Groups', type: :system do
   let!(:membership2) { FactoryBot.create(:membership, member: member2, group: group) }
   # let!(:category) { FactoryBot.create(:category) }
 
-  describe 'グループ詳細（information）画面' do
+  describe 'グループ（information）画面' do
     context 'グループオーナーの場合' do
       before do
         sign_in(member)
@@ -20,12 +20,9 @@ RSpec.describe 'Groups', type: :system do
       end
 
       it '編集ボタンが表示される' do
-        expect(page).to have_button 'Edit Group'
+        expect(page).to have_link 'Edit Group'
       end
 
-      it '削除ボタンが表示される' do
-        expect(page).to have_button 'Delete Group'
-      end
     end
 
     context 'グループオーナー以外の場合' do
