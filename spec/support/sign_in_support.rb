@@ -6,8 +6,4 @@ module SignInSupport
     click_button "Log In"
   end
 
-  def setup_current_member
-    let(:member)
-    let(:)
-  end
 end

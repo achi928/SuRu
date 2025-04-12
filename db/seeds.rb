@@ -21,8 +21,9 @@ nicknames = ['mitoma', 'karina', 'sakura', 'winter', 'ninnin', 'kamata', 'poo', 
     member.is_active = true
     member.password = number
   end
-  puts members.nickname
-  puts members.password
+  puts member.nickname
+  puts member.password
+
 end
 
 

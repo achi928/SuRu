@@ -4,19 +4,18 @@ RSpec.describe 'Members', type: :system do
   let(:member) { FactoryBot.create(:member) }
 
   describe 'ログインのテスト' do
-    context 'ログイン処理を行う' do
-      it 'グループに未所属の時' do
+    context 'グループに未所属の時' do
+      it 'カテゴリ一覧に遷移する' do
         sign_in(member)
         expect(page).to have_content 'ログインしました！'
         expect(current_path).to eq categories_path
       end
     end
 
-    context 'ユーザー認証のテスト' do
+    context 'グループに所属していた時' do
       let(:group) { FactoryBot.create(:group) }
-      let(:membership) { FactoryBot.create(:membership, member: member, group: group) }
-      it 'グループに所属していたとき' do
-        membership
+      let!(:membership) { FactoryBot.create(:membership, member: member, group: group) }
+      it 'マイページへ遷移する' do
         sign_in(member)
         expect(current_path).to eq mypage_path
       end
@@ -28,7 +27,7 @@ RSpec.describe 'Members', type: :system do
       before do
           visit new_member_registration_path
       end
-      context '新規登録画面に遷移' do
+      context '入力内容が正しい時' do
         it '新規登録に成功する' do
           fill_in 'member[nickname]', with: Faker::Internet.username(specifier: 5)
           fill_in 'member[email]', with: Faker::Internet.email
@@ -38,6 +37,7 @@ RSpec.describe 'Members', type: :system do
           expect(page).to have_content 'アカウント登録が完了しました。気になるCategoryから自分にぴったりのGroupを見つけよう！'
         end
         
+      context '入力内容に不備がある時'
         it '新規登録に失敗する' do
           fill_in 'member[nickname]', with: ''
           fill_in 'member[email]', with:''
@@ -51,5 +51,15 @@ RSpec.describe 'Members', type: :system do
       end
     end
   end
+
+  describe 'マイページのテスト' do
+    before do
+      visit mypage_path
+    end
+    
+  end
+
+
+
 end
 
