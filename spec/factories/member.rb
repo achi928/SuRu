@@ -8,6 +8,4 @@ FactoryBot.define do
     
   end
 
-  factory :blank_member, class: Member do
-  end
 end
