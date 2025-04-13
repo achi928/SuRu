@@ -6,6 +6,7 @@ RSpec.describe 'Groups', type: :system do
   let(:group) { FactoryBot.create(:group, owner: member) }
   let!(:membership) { FactoryBot.create(:membership, member: member, group: group) }
   let!(:membership2) { FactoryBot.create(:membership, member: member2, group: group) }
+  Category.create(name: '筋トレ')
 
   describe 'グループ（information）画面' do
     context 'グループオーナーの場合' do
@@ -87,25 +88,27 @@ RSpec.describe 'Groups', type: :system do
 
     context '入力内容が正しい時' do
       it '編集に成功する' do
-        Category.create(name: '筋トレ')
-        select '筋トレ', from: 'group[category_id]'
+        select '筋トレ', from: 'group[category_id]',match: :first
         fill_in 'group[name]', with: '毎日スクワット部'
         fill_in 'group[introduction]', with: '50回'
-        expect do
-          click_button 'Create Group'
-        end.to change(Group, :count).by(1)
+        click_button 'Update Group'
+        expect(page).to have_content '筋トレ'
+        expect(page).to have_content '毎日スクワット部'
+        expect(page).to have_content '50回'
+        expect(current_path).to eq information_path(group) 
       end
     end
 
     context 'フォームを空で送信した時' do
       it '編集に失敗する' do
-        select '美容', from: 'group[category_id]'
-        fill_in 'group[name]', with: '毎日7時起き'
-        fill_in 'group[introduction]', with: '毎日7時起きに起きます'
-        click_button 'Update Post'
-        expect(page).to have_content '内容を入力してください'
+        fill_in 'group[name]', with: ''
+        fill_in 'group[introduction]', with: ''
+        click_button 'Update Group'
+        expect(page).to have_content 'グループ名を入力してください'
+        expect(page).to have_content 'グループ紹介を入力してください'
       end
     end
+
     context '表示の確認' do
       it '編集前の内容がフォームに表示されている' do
         expect(page).to have_select('group[category_id]', selected: '美容')
