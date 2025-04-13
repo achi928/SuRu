@@ -4,7 +4,8 @@ RSpec.describe 'Posts', type: :system do
   let(:member) { FactoryBot.create(:member) }
   let(:group) { FactoryBot.create(:group) }
   let!(:membership) { FactoryBot.create(:membership, member: member, group: group) }
-  let!(:post) { FactoryBot.create(:post, member: member) }
+  let!(:post) { FactoryBot.create(:post, member: member, group: group) }
+
 
   describe '投稿・編集のテスト' do
 
@@ -46,6 +47,7 @@ RSpec.describe 'Posts', type: :system do
           fill_in 'post[content]', with: 'おやすみ'
           click_button 'Update Post'
           expect(current_path).to eq group_path(group) 
+          expect(page).to have_content 'おやすみ'
         end
       end
 
@@ -58,6 +60,9 @@ RSpec.describe 'Posts', type: :system do
       end
 
       context '表示の確認' do
+        it '「Edit Post」と表示される' do
+          expect(page).to have_content('Edit Post') 
+        end
         it '編集前の内容がフォームに表示されている' do
           expect(page).to have_field 'post[content]', with: post.content
         end
