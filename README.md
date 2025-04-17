@@ -36,10 +36,11 @@
 
 ## 開発環境
 - OS：Linux(CentOS)
+- アプリケーションサーバー：Puma
+- Webサーバー：Nginx
 - 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
 - 認証機能：Devise
 - テスト：RSpec（FactoryBot / Faker）
 - データベース：MySQL
@@ -50,8 +51,4 @@
 ![ SuRu AWS](app/assets/images/cloud.png)
 ​
 ## 使用素材
-著作権を考慮し、架空のデータを扱う予定です。
-なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。
-
-## テスト
-- Rspec
+- Canva（URL:https://www.canva.com/）によるAI生成画像を使用
