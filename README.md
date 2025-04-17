@@ -51,4 +51,5 @@
 ![ SuRu AWS](app/assets/images/cloud.png)
 ​
 ## 使用素材
-- Canva（URL:https://www.canva.com/）によるAI生成画像を使用
+- CanvaによるAI生成画像を使用
+（URL:https://www.canva.com/）
