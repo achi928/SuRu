@@ -2,14 +2,31 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :system do
   let(:member) { FactoryBot.create(:member) }
+  let(:member2) { FactoryBot.create(:member) }
   let(:group) { FactoryBot.create(:group) }
   let!(:membership) { FactoryBot.create(:membership, member: member, group: group) }
+  let!(:membership2) { FactoryBot.create(:membership, member: member2, group: group) }
   let!(:post) { FactoryBot.create(:post, member: member, group: group) }
+  let!(:post2) { FactoryBot.create(:post, member: member2, group: group) }
 
-  describe '投稿のテスト' do
+  describe 'ページ遷移の確認' do
     before do 
       sign_in(member)
       visit new_post_comment_path(post)
+    end
+
+    context '自分の投稿だった時' do
+      it 'マイページに遷移する' do
+        expect(current_path).to eq mypage_path
+      end
+    end
+  end
+
+
+  describe 'コメント投稿のテスト' do
+    before do 
+      sign_in(member)
+      visit new_post_comment_path(post2)
     end
 
     context '入力内容が正しい時' do
