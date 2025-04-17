@@ -4,7 +4,7 @@ class Member::CommentsController < ApplicationController
 
   def new
     group = @post.group
-    unless current_member.memberships.active.exists?(group_id: group.id)
+    if @post.member_id == current_member.id || !current_member.memberships.active.exists?(group_id: group.id)
       redirect_to mypage_path
     end
     @comment = Comment.new

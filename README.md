@@ -2,7 +2,10 @@
 ## サイト概要
 ### サイトテーマ
 美容と健康、ゆるく繋がって、続けるためのコミュニティサイト
-​
+
+### URL
+(https://suru-community.com)
+
 ### テーマを選んだ理由
 もともと健康や美容に興味があり、毎日ストレッチをする、ジムに通う、食事制限をするなど、自分なりにルールを決めて継続していました。
 しかし、1人で続けるのは思った以上に難しく、モチベーションが下がることもありました。
@@ -33,10 +36,11 @@
 
 ## 開発環境
 - OS：Linux(CentOS)
+- アプリケーションサーバー：Puma
+- Webサーバー：Nginx
 - 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
 - 認証機能：Devise
 - テスト：RSpec（FactoryBot / Faker）
 - データベース：MySQL
@@ -47,8 +51,5 @@
 ![ SuRu AWS](app/assets/images/cloud.png)
 ​
 ## 使用素材
-著作権を考慮し、架空のデータを扱う予定です。
-なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。
-
-## テスト
-- Rspec
+- CanvaによるAI生成画像を使用
+（URL:https://www.canva.com/）
