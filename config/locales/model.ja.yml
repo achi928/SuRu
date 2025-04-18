@@ -13,6 +13,8 @@ ja:
       member: 'メンバー'
       post:
         content: '内容'
+      comment:
+        content: 'コメント'
   errors:
     messages:
       not_saved: '入力内容を確認してください。'
