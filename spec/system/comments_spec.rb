@@ -34,8 +34,7 @@ RSpec.describe 'Posts', type: :system do
         fill_in 'comment[content]', with: 'お疲れ'
         expect do
           click_button 'Post a Comment'
-        end
-        .to change(Comment, :count).by(1)
+        end.to change(Comment, :count).by(1)
         expect(current_path).to eq group_path(group) 
       end
     end
