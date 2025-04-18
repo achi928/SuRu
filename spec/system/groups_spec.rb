@@ -109,6 +109,14 @@ RSpec.describe 'Groups', type: :system do
       end
     end
 
+    context 'グループ削除ボタンを押した時' do
+      it 'グループカウントが１減る' do
+        expect do
+          click_link 'Delete Group'
+        end.to change(Group, :count).by(-1)
+      end
+    end
+
     context '表示の確認' do
       it '編集前の内容がフォームに表示されている' do
         expect(page).to have_select('group[category_id]', selected: '美容')
@@ -120,6 +128,9 @@ RSpec.describe 'Groups', type: :system do
       end
       it 'グループ編集ボタンが表示される' do
         expect(page).to have_button 'Update Group' 
+      end
+      it 'グループ削除ボタンが表示される' do
+        expect(page).to have_link 'Delete Group'
       end
     end
   end
