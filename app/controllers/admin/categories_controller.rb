@@ -3,9 +3,15 @@ class Admin::CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
 
   def create
-    category = Category.create!(category_params)
-    flash[:notice] = 'カテゴリーを追加しました'
-    redirect_to admin_categories_path
+    @category = Category.new(category_params)
+    if @category.save
+      flash[:notice] = 'カテゴリーを追加しました'
+      redirect_to admin_categories_path
+    else
+      flash.now[:alert] = 'カテゴリーの追加に失敗しました'
+      @categories = Category.all
+      render :index
+    end
   end
 
   def index
@@ -17,15 +23,24 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    @category.update(category_params)
-    flash[:notice] = 'カテゴリーを編集しました'
-    redirect_to admin_categories_path
+    if @category.update(category_params)
+      flash[:notice] = 'カテゴリーを編集しました'
+      redirect_to admin_categories_path
+    else
+      flash.now[:alert] = 'カテゴリーの編集に失敗しました'
+      render :edit
+    end
   end
 
   def destroy
-    @category.destroy
-    flash[:notice] = 'カテゴリーを削除しました'
-    redirect_to admin_categories_path
+    if @category.destroy
+      flash[:notice] = 'カテゴリーを削除しました'
+      redirect_to admin_categories_path
+    else
+      flash.now[:alert] = 'カテゴリーの編集に失敗しました'
+      @categories = Category.all
+      render :index
+    end
   end
 
   private

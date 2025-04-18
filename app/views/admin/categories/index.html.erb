@@ -4,6 +4,15 @@
   <div class = 'row mb-4'>
     <div class = 'col-12 col-md-8 mx-auto'>
       <div class = 'p-3 border rounded bg-light'>
+      
+        <% if @category.errors.any? %>
+          <ul>
+            <% @category.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
         <%= form_with model: [:admin, @category] do |f| %>
           <div class = 'form-group'>
             <label>カテゴリー画像</label>
