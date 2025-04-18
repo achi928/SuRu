@@ -61,7 +61,7 @@ RSpec.describe 'Posts', type: :system do
 
       context '表示の確認' do
         it '「Edit Post」と表示される' do
-          expect(page).to have_content('Edit Post') 
+          expect(page).to have_content 'Edit Post'
         end
         it '編集前の内容がフォームに表示されている' do
           expect(page).to have_field 'post[content]', with: post.content

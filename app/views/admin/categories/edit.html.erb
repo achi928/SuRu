@@ -3,6 +3,15 @@
 
   <div class='row justify-content-center'>
     <div class='col-md-6'>
+    
+      <% if @category.errors.any? %>
+        <ul>
+          <% @category.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: [:admin, @category] do |f| %>
         <div class='form-group'>
           <label class='font-weight-bold'>カテゴリー画像</label>
