@@ -50,7 +50,7 @@ RSpec.describe 'Posts', type: :system do
 
     context '表示の確認' do
       it '「New Comment」と表示される' do
-        expect(page).to have_content('New Comment') 
+        expect(page).to have_content 'New Comment'
       end
     end
 

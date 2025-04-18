@@ -71,7 +71,7 @@ RSpec.describe 'Groups', type: :system do
 
     context '表示の確認' do
       it '「New Group」と表示される' do
-        expect(page).to have_content('New Group') 
+        expect(page).to have_content 'New Group'
       end
 
       it 'グループ作成ボタンが表示される' do
@@ -124,7 +124,7 @@ RSpec.describe 'Groups', type: :system do
         expect(page).to have_field 'group[introduction]', with: group.introduction
       end
       it '「Edit Group」と表示される' do
-        expect(page).to have_content('Edit Group') 
+        expect(page).to have_content 'Edit Group'
       end
       it 'グループ編集ボタンが表示される' do
         expect(page).to have_button 'Update Group' 

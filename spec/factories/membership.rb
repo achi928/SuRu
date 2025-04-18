@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :membership do
-    
-    association :member
-    association :group
     is_active { true }
 
+    association :member
+    association :group
   end
 end

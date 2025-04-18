@@ -5,6 +5,5 @@ FactoryBot.define do
 
     association :owner
     association :category 
-    
   end
 end

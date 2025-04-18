@@ -52,14 +52,5 @@ RSpec.describe 'Members', type: :system do
     end
   end
 
-  describe 'マイページのテスト' do
-    before do
-      visit mypage_path
-    end
-    
-  end
-
-
-
 end
 
