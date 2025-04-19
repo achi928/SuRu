@@ -46,10 +46,9 @@
   <div class='container'>
     <h2 class='text-center font-weight-bold mb-2'>What??</h2>
     <p class='text-center mb-5'>— SuRuってなに —</p>
-    <h4 class='text-center mb-5'>ゆるくつながって、美容と健康を“続ける”
-    コミュニティサイト</h4>
+    <h4 class='text-center mb-5'>ゆるくつながって、美容と健康を“続ける”コミュニティサイト</h4>
 
-    <!-- 1個目 -->
+    <!-- 1つ目 -->
     <div class='row align-items-center mb-5'>
       <div class='col-md-5 text-center mb-3 '>
         <%= image_tag 'what1.webp', alt: 'SuRu投稿画面', class: 'what-image' %>
@@ -68,20 +67,19 @@
     
     <!-- 2つ目 -->
     <div class='row align-items-center justify-content-center'>
-    <div class='col-md-5 text-center mb-3'>
-      <%= image_tag 'what2.webp', alt: 'SuRuコメント画面', class: 'what-image' %>
+      <div class='col-md-5 text-center mb-3'>
+        <%= image_tag 'what2.webp', alt: 'SuRuコメント画面', class: 'what-image' %>
+      </div>
+      <div class='col-md-7'>
+        <p class='font-weight-bold'>「いいねや応援コメントはあとから消せません」</p>
+        <p>いいねやコメントは、<br>
+        がんばったあなたを認めるメッセージ。<br>
+        その応援が、一緒に頑張る仲間の力になります。</p>
+        <p>SuRuは、やさしい言葉が行き交う場所でありたい。<br>
+        だからみんなが安心して使えるように、<br>
+        やりとりは大切に記録されていて、困ったときはいつでも運営がサポートします。</p>
+      </div>
     </div>
-    <div class='col-md-7'>
-      <p class='font-weight-bold'>「いいねや応援コメントはあとから消せません」</p>
-      <p>いいねやコメントは、<br>
-      がんばったあなたを認めるメッセージ。<br>
-      その応援が、一緒に頑張る仲間の力になります。</p>
-      <p>SuRuは、やさしい言葉が行き交う場所でありたい。<br>
-      だからみんなが安心して使えるように、<br>
-      やりとりは大切に記録されていて、困ったときはいつでも運営がサポートします。</p>
-    </div>
-  </div>
-  
   
   </div>
 </section>
@@ -94,62 +92,27 @@
     <p class='mb-5'>— カテゴリ —</p>
 
     <div class='row'>
-      <div class='col-md-3 col-6 mb-4'>
-        <div class='card p-2 shadow custom_back'>
-          <%= image_tag 'meal.webp', alt: '食事改善', class: 'img-fluid' %>
-          <h5 class='mt-2'>食事改善</h5>
+      <% categories = [
+        ['meal.webp', '食事改善'],
+        ['traning.webp', 'トレーニング'],
+        ['walking.webp', 'ウォーキング'],
+        ['run.webp', 'ランニング'],
+        ['morning.webp', '早起き'],
+        ['night.webp', '早寝'],
+        ['yoga.webp', 'ヨガ・ピラティス'],
+        ['cancel.webp', 'キャンセル界隈']
+      ] %>
+    
+      <% categories.each do |image, name| %>
+        <div class='col-md-3 col-6 mb-4'>
+          <div class='card p-2 shadow custom_back'>
+            <%= image_tag image, alt: name, class: 'img-fluid' %>
+            <h5 class='mt-2'><%= name %></h5>
+          </div>
         </div>
-      </div>
-
-      <div class='col-md-3 col-6 mb-4'>
-        <div class='card p-2 shadow custom_back'>
-          <%= image_tag 'traning.webp', alt: 'トレーニング', class: 'img-fluid' %>
-          <h5 class='mt-2'>トレーニング</h5>
-        </div>
-      </div>
-
-      <div class='col-md-3 col-6 mb-4'>
-        <div class='card p-2 shadow custom_back'>
-          <%= image_tag 'walking.webp', alt: 'ウォーキング', class: 'img-fluid' %>
-          <h5 class='mt-2'>ウォーキング</h5>
-        </div>
-      </div>
-
-      <div class='col-md-3 col-6 mb-4'>
-        <div class='card p-2 shadow custom_back'>
-          <%= image_tag 'run.webp', alt: 'ランニング', class: 'img-fluid' %>
-          <h5 class='mt-2'>ランニング</h5>
-        </div>
-      </div>
-
-      <div class='col-md-3 col-6 mb-4'>
-        <div class='card p-2 shadow custom_back'>
-          <%= image_tag 'morning.webp', alt: '早起き', class: 'img-fluid' %>
-          <h5 class='mt-2'>早起き</h5>
-        </div>
-      </div>
-
-      <div class='col-md-3 col-6 mb-4'>
-        <div class='card p-2 shadow custom_back'>
-          <%= image_tag 'night.webp', alt: '早寝', class: 'img-fluid' %>
-          <h5 class='mt-2'>早寝</h5>
-        </div>
-      </div>
-
-      <div class='col-md-3 col-6 mb-4'>
-        <div class='card p-2 shadow custom_back'>
-          <%= image_tag 'yoga.webp', alt: 'ヨガ・ピラティス', class: 'img-fluid' %>
-          <h5 class='mt-2'>ヨガ・ピラティス</h5>
-        </div>
-      </div>
-
-      <div class='col-md-3 col-6 mb-4'>
-        <div class='card p-2 shadow custom_back'>
-          <%= image_tag 'cancel.webp', alt: 'キャンセル界隈', class: 'img-fluid' %>
-          <h5 class='mt-2'>キャンセル界隈</h5>
-        </div>
-      </div>
+      <% end %>
     </div>
+  
 
     <div class='mt-5'>
       <h4 class='text-danger font-weight-bold'>まずはカテゴリーを選ぼう！</h4>
@@ -191,65 +154,27 @@
     <p class='text-center mb-5'>— ユーザーの声 —</p>
 
     <div class='row'>
-      <div class='col-md-4 mb-4'>
-        <div class='card p-4 text-center'>
-          <div class='mb-3'>
-            <%= image_tag 'member1.webp', alt: 'member1', class: 'img-fluid' %>
-          </div>
-          <p>友達から足細くなった？って言われた！<br>こっそりここで継続した甲斐あった！</p>
-          <p class='text-muted'>（10代女性）</p>
-        </div>
-      </div>
+      <% reviews = [
+        ['member1.webp', 'member1', '友達から足細くなった？って言われた！<br>こっそりここで継続した甲斐あった！','（10代女性）'],
+        ['member2.webp', 'member2', '風呂キャンセル界隈卒業！！', '（匿名）'],
+        ['member3.webp', 'member3', '朝ランの習慣化に成功。<br>1日を有効活用できるようになって、<br>人生の充実度が上がった気がする。', '（30代男性）'],
+        ['member4.webp', 'member4', '継続できて、綺麗になれて<br>間違いなく人生アプリ', '（20代女性）'],
+        ['member5.webp', 'member5', '同じ目標の仲間と筋トレを続けていたら、<br>最近肩が大きくなってきた！シンプルに良いことしかない！', '（20代男性）'],
+        ['member6.webp', 'member6', '最近流行ってるから始めてみたら案外継続できてる。カレンダーで継続できてるか確認できるの嬉しい！', '（20代女性）']
+      ] %>
 
-      <div class='col-md-4 mb-4'>
-        <div class='card p-4 text-center'>
-          <div class='mb-3'>
-            <%= image_tag 'member2.webp', alt: 'member2', class: 'img-fluid' %>
+      <% reviews.each do |image, alt, review, age| %>
+        <div class='col-md-4 mb-4'>
+          <div class='card p-4 text-center'>
+            <div class='mb-3'>
+              <%= image_tag image, alt: alt, class: 'img-fluid' %>
+            </div>
+            <p><%= review %></p>
+            <p class='text-muted'><%= age %></p>
           </div>
-          <p>風呂キャンセル界隈卒業！！</p>
-          <p class='text-muted'>（匿名）</p>
         </div>
-      </div>
+      <% end %>
 
-      <div class='col-md-4 mb-4'>
-        <div class='card p-4 text-center'>
-          <div class='mb-3'>
-            <%= image_tag 'member4.webp', alt: 'member4', class: 'img-fluid' %>
-          </div>
-          <p>朝ランの習慣化に成功。<br>1日を有効活用できるようになって、<br>人生の充実度が上がった気がする。</p>
-          <p class='text-muted'>（30代男性）</p>
-        </div>
-      </div>
-
-      <div class='col-md-4 mb-4'>
-        <div class='card p-4 text-center'>
-          <div class='mb-3'>
-            <%= image_tag 'member5.webp', alt: 'member5', class: 'img-fluid' %>
-          </div>
-          <p>継続できて、綺麗になれて<br>間違いなく人生アプリ</p>
-          <p class='text-muted'>（20代女性）</p>
-        </div>
-      </div>
-
-      <div class='col-md-4 mb-4'>
-        <div class='card p-4 text-center'>
-          <div class='mb-3'>
-            <%= image_tag 'member6.webp', alt: 'member6', class: 'img-fluid' %>
-          </div>
-          <p>同じ目標の仲間と筋トレを続けていたら、<br>最近肩が大きくなってきた！シンプルに良いことしかない！</p>
-          <p class='text-muted'>（20代男性）</p>
-        </div>
-      </div>
-
-      <div class='col-md-4 mb-4'>
-        <div class='card p-4 text-center'>
-          <div class='mb-3'>
-            <%= image_tag 'member3.webp', alt: 'member3', class: 'img-fluid' %>
-          </div>
-          <p>最近流行ってるから始めてみたら案外継続できてる。カレンダーで継続できてるか確認できるの嬉しい！</p>
-          <p class='text-muted'>（20代女性）</p>
-        </div>
-      </div>
     </div>
 
     <div class='text-center mt-5'>
@@ -264,13 +189,11 @@
   <div class='container'>
     <div class='row justify-content-between align-items-center mb-3'>
 
-      <!-- 左側：ロゴと説明 -->
       <div class='col-md-6 text-center text-md-left mb-3 mb-md-0'>
         <h5 class='mb-1 font-weight-bold'>SuRu</h5>
-        <p class='mb-0'>自分のペースで続ける、美容と健康のコミュニティ</p>
+        <p class='mb-0'>自分のペースで続ける、美容と健康のコミュニティサイト</p>
       </div>
 
-      <!-- 右側：リンク -->
       <div class='col-md-6 text-center text-md-right'>
         <a href='#' class='text-dark mx-2'>利用規約</a>
         <a href='#' class='text-dark mx-2'>プライバシー</a>
@@ -279,15 +202,11 @@
 
     </div>
 
-    <!-- 下段：コピーライト -->
     <div class='text-center text-muted small'>
       &copy; SuRu 2025 All rights reserved.
     </div>
 
   </div>
 </footer>
-
-
-
 
 </div>
