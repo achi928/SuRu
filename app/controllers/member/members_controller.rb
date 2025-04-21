@@ -3,6 +3,7 @@ class Member::MembersController < ApplicationController
   before_action :set_member, only: [:mypage, :edit, :update, :unsubscibe, :withdraw]
 
   def mypage
+    # current_memberは1人、ポストは複数 → N＋1はなし
     @posts = current_member.posts.order(created_at: :asc)
     respond_to do |format|
        format.html
