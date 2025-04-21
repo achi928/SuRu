@@ -3,7 +3,7 @@ class Admin::SearchesController < ApplicationController
   def search_group
     word = params[:word].to_s.strip # to_s は空文字が送られてきた時用
     if word.present? # wordが存在、空じゃないか
-      @groups = Group.where('name LIKE ?', "%#{word}%")
+      @groups = Group.where('name LIKE ?', "%#{word}%").includes(:category)
     else
       @groups = Group.none
       flash[:alert] = '該当するグループはありません'
