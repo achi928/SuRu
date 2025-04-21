@@ -3,6 +3,9 @@ class Member::MembersController < ApplicationController
   before_action :set_member, only: [:mypage, :edit, :update, :unsubscibe, :withdraw]
 
   def mypage
+    # 所属グループが10件以上とかにはならない
+    # aciveが多 groupsも多になるからN＋1の条件には当てはまる
+    @joined_groups = current_member.memberships.active.includes(:group)
     # current_memberは1人、ポストは複数 → N＋1はなし
     @posts = current_member.posts.order(created_at: :asc)
     respond_to do |format|

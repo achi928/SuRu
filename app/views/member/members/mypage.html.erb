@@ -27,16 +27,16 @@
           <tr>
             <th>Groups</th>
             <th>
-              <% @member.memberships.active.each do |membership| %>
-                <%= link_to membership.group.name, group_path(membership.group.id), class: 'text-dark' %><br>
+              <% @joined_groups.each do |joined| %>
+                <%= link_to joined.group.name, group_path(joined.group.id), class: 'text-dark' %><br>
               <% end %>
             </th>
           </tr>
           <tr>
             <th>Owner Groups</th>
             <th>
-              <% @member.owner_groups.each do |mygroup| %>
-                <%= link_to mygroup.name, information_path(mygroup.id),class: 'text-dark' %><br>
+              <% @member.owner_groups.each do |owner_groups| %>
+                <%= link_to owner_groups.name, information_path(owner_groups.id),class: 'text-dark' %><br>
               <% end %>
             </th>
           </tr>
