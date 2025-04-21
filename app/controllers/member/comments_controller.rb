@@ -18,7 +18,7 @@ class Member::CommentsController < ApplicationController
       flash[:notice] = 'コメントしました！'
       redirect_to group_path(group.id)
     else
-      flash[:alert] = 'コメントに失敗しました。'
+      flash.now[:alert] = 'コメントに失敗しました。'
       render :new
     end
   end

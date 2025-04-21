@@ -1,10 +1,10 @@
-<%= render 'member/posts/error', object: @comment %>
-
 <div class='container mt-5'>
   <div class='row justify-content-center'>
     <div class='col-lg-4 col-md-4 col-sm-8'>
 
       <h1 class='text-center mb-4 border-bottom'>New Comment</h1>
+
+      <%= render 'member/posts/error', object: @comment %>
 
       <%= form_with model: @comment, url: post_comments_path, method: :post do |f| %>
         <div class="form-group">
