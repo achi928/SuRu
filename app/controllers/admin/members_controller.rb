@@ -6,6 +6,8 @@ class Admin::MembersController < ApplicationController
   end
 
   def index
+    # メンバー id, nickname, is_activeのみ
+    # SELECT * FROM 'members'
     @members = Member.all.page(params[:page])
   end
 

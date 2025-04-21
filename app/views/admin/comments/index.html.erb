@@ -1,5 +1,6 @@
 <div class='container mt-4'>
   <h1 class='fw-bold border-bottom pb-2 mb-4 text-center'>
+  <!-- select * from 'members' -->
     <%= @member.nickname %> コメント一覧
   </h1>
 
@@ -13,7 +14,9 @@
               <th class='text-end'></th>
             </tr>
           </thead>
+
           <tbody>
+            <!-- コメントのコンテントのみ select * from 'comments'-->
             <% @comments.each do |comment| %>
               <tr>
                 <td><%= comment.content %></td>

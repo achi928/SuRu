@@ -22,7 +22,10 @@
               <th class='text-center'>グループ名</th>
             </tr>
           </thead>
+
           <tbody>
+          <!-- select * from 'groups' -->
+          <!-- select * from 'categories' -->
             <% @groups.each do |group| %>
               <tr class='bg-white'>
                 <td class='text-center'><%= group.category.name %></td>
