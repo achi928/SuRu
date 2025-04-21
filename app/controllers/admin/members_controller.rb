@@ -2,7 +2,7 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def show
-    @member = Member.includes(:comments).find(params[:id])
+    @member = Member.find(params[:id])
   end
 
   def index
