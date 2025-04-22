@@ -1,14 +1,13 @@
-<div class="container py-5">
-  <h1 class="text-center mb-4">退会確認</h1>
+<div class='container py-5'>
+  <h1 class='text-center mb-4'>Leaving SuRu ?</h1>
 
-  <p class="text-center text-muted">
+  <p class='text-center'>
     本当に退会しますか？<br>
-    これまでの参加履歴や投稿が確認できなくなります。<br>
-    退会する場合は、「退会する」をクリックしてください。
+    退会する場合は、「Unsubscribe」をクリックしてください。
   </p>
 
-  <div class="d-flex justify-content-center gap-3 mt-4">
-    <%= link_to "Unsubscribe", withdraw_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-danger px-4" %>
-    <%= link_to "Cancel", mypage_path, class: "btn btn-secondary px-4" %>
+  <div class='d-flex justify-content-center mt-4'>
+    <%= link_to 'Unsubscribe', withdraw_path, method: :patch, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-outline-danger px-4' %>
+    <%= link_to 'Cancel', mypage_path, class: 'btn btn-secondary px-4' %>
   </div>
 </div>
