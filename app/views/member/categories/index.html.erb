@@ -1,24 +1,23 @@
+<div class='container mt-2'>
 
-  <div class='container mt-2'>
-    <!-- 検索フォーム -->
-    <div class="d-flex justify-content-end mb-4">
-      <%= render 'member/searches/search_form' %>
-    </div>
-
-    <h1 class='border-bottom pb-3 mb-3 text-center'>Category</h1>
-    <%= link_to '＋New Group', new_group_path, class: 'btn btn-outline-primary btn-lg' %>
-
-    <div class='row d-flex justify-content-center'>
-      <% @categories.each do |category| %>
-        <div class='col-6 col-md-3 mt-2'>
-          <div class='rounded shadow custom_back'>
-            <%= link_to category_path(category.id), class: 'd-block text-dark', style: 'text-decoration: none;' do %>
-              <%= image_tag category.get_category_image(400, 200), class: 'img-fluid w-80' %>
-              <h4 class='text-center border-top pt-2 pb-2'><%= category.name %></h4>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    
+  <!-- 検索フォーム -->
+  <div class="d-flex justify-content-end mb-4">
+    <%= render 'member/searches/search_form' %>
   </div>
+
+  <h1 class='border-bottom pb-3 mb-3 text-center'>Category</h1>
+  <%= link_to '＋New Group', new_group_path, class: 'btn btn-outline-primary btn-lg' %>
+  <div class='row d-flex justify-content-center'>
+    <% @categories.each do |category| %>
+      <div class='col-6 col-md-3 mt-2'>
+        <div class='rounded shadow custom_back'>
+          <%= link_to category_path(category.id), class: 'd-block text-dark', style: 'text-decoration: none;' do %>
+            <%= image_tag category.get_category_image(400, 200), class: 'img-fluid w-80' %>
+            <h4 class='text-center border-top pt-2 pb-2'><%= category.name %></h4>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+</div>

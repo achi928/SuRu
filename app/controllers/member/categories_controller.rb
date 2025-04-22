@@ -7,6 +7,7 @@ class Member::CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    # カテゴリー１に対して、グループが多だからN+1回避
     @category_groups = @category.groups
   end
 end

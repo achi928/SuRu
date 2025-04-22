@@ -11,7 +11,7 @@
 
       <p class='mb-3'><strong>Owner:</strong> <%= @group.owner.nickname %></p>
 
-      <div class="d-flex align-items-center justify-content-center mt-3">
+      <div class='d-flex justify-content-center mt-3'>
         <!-- 編集ボタン（オーナーのみ） -->
         <% if @group.owner.id == current_member.id %>
           <%= link_to 'Edit Group', edit_group_path(@group.id), class: 'btn btn-outline-dark mr-2' %>
@@ -30,14 +30,13 @@
       <!-- メンバー一覧 -->
       <h2 class='mt-4 mb-3'>Menber</h2>
       <div class='d-flex flex-wrap justify-content-center mb-4'>
+      # N+1が起こる条件ではあるけど、メンバーは5人までだから回避できる
         <% @group.memberships.active.each do |membership| %>
           <%= link_to member_path(membership.member.id) do %>
             <%= image_tag membership.member.get_profile_image(150, 150), class: 'rounded-circle border shadow' %>
           <% end %>
         <% end %>
       </div>
-
-
 
     </div>
   </div>
