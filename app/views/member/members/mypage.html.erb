@@ -35,8 +35,8 @@
           <tr>
             <th>Owner Groups</th>
             <th>
-              <% @member.owner_groups.each do |mygroup| %>
-                <%= link_to mygroup.name, information_path(mygroup.id),class: 'text-dark' %><br>
+              <% @member.owner_groups.each do |owner_groups| %>
+                <%= link_to owner_groups.name, information_path(owner_groups.id),class: 'text-dark' %><br>
               <% end %>
             </th>
           </tr>

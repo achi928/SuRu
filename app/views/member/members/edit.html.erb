@@ -25,15 +25,15 @@
         </div>
 
         <div class='form_group mb-3'>
-          <%= f.label :birth_year, 'Birth Eaer', class: 'form-label' %><br>
-          <%= f.select :birth_year, options_for_select((1965..2014).to_a, @member.birth_year), class: 'form-control', prompt: '選択してください' %>
+          <%= f.label :birth_year, 'Birth Year', class: 'form-label' %><br>
+          <%= f.select :birth_year, options_for_select((1965..2014), @member.birth_year), class: 'form-control', prompt: '選択してください' %>
         </div>
 
         <div class='form_group mb-3'>
           <%= f.label :gender, 'Gender', class: 'form-label' %><br>
           <% @member.gender_option.each do |key, value| %>
             <%= f.radio_button :gender, key %>
-            <%= label_tag "member_gender_#{key}", value %>
+            <%= f.label :gender, value %>
           <% end %>
 
           <div class='form_group mb-3'>
