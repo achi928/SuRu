@@ -24,6 +24,11 @@ class Member::GroupsController < ApplicationController
     @membership = Membership.find_by(group_id: @group.id, member_id: current_member.id)
     @post = Post.new
     @posts = @group.posts
+    @new_posts = @posts.left_joins(:likes,:comments)
+    .includes(:likes, member: :memberships)
+    .select("posts.*, COUNT(DISTINCT likes.id) AS likes_count, COUNT(DISTINCT comments.id) AS comments_count")
+    .group("posts.id").order(created_at: :desc)
+  end
 
   def information
     @group = Group.find(params[:id])

@@ -49,7 +49,7 @@
 
             <!-- 投稿内容（編集可能） -->
             <strong class='mr-5'>
-              <%= link_to "#{post.content}", edit_group_post_path(@group.id, post.id), style: 'color: black; text-decoration: none;' %>
+              <%= link_to post.content, edit_group_post_path(@group.id, post.id), style: 'color: black; text-decoration: none;' %>
             </strong>
 
             <!-- 投稿に画像がある場合のみ表示 -->
@@ -60,8 +60,8 @@
             <!-- コメント いいね -->
             <div class='d-flex justify-content-between align-items-center'>
               <div>
-                <%= link_to "#{post.comments.count}コメント", post_comments_path(post.id), class: 'text-dark mr-3' %>
-                <%= post.likes.count %>いいね
+                <%= link_to "#{post.comments.size}コメント", post_comments_path(post.id), class: 'text-dark mr-3' %>
+                <%= post.likes.size %>いいね
               </div>
               <div class='text-muted small mr-4'>
                 <%= post.created_at.in_time_zone('Tokyo').strftime('%m/%d %p %I:%M') %>

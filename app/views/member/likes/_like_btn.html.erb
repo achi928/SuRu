@@ -1,5 +1,5 @@
-<%= post.likes.count %>いいね
-<% unless post.likes.where(member_id: current_member.id).exists? %>
+<%= post.likes.size %>いいね
+<% unless post.likes.any? { |like| like.member_id == current_member.id } %>
   <%= link_to '♡', post_likes_path(post.id), method: :post, remote: true, class: 'text-danger' %>
 <% else %>
   <strong class='text-danger'>❤︎</strong>
