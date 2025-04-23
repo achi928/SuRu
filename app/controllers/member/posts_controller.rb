@@ -19,6 +19,9 @@ class Member::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    unless @post.member_id == current_member.id
+      redirect_to = mypage_path
+    end
   end
 
   def update
