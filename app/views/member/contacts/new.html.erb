@@ -1,6 +1,6 @@
 <div class='container mt-5'>
   <div class='row justify-content-center'>
-    <div class='col-lg-4 col-md-4 col-sm-8'>
+    <div class='col-lg-5 col-md-5 col-sm-8'>
       <h1 class='text-center mb-4 border-bottom'>Contact Form</h1>
 
       <%= form_with model: @contact do |f| %>
@@ -17,16 +17,19 @@
 
         <div class='form_group mb-3'>
           <%= f.label :subject, 'Subject', class: 'form-label' %>
+          <% category = [] %>
+          <% Category.all.each { |c| category << [c.name, c.id] } %>
+          <%= f.select :subject, category, class: 'form-control', prompt: '選択してください' %>
           <%= f.collection_select(:subject, Category.all, :id, :name, { prompt: '選択してください' }, { class: 'form-control' }) %>
         </div>
 
         <div class='form_group mb-3'>
           <%= f.label :message, 'Message', class: 'form-label' %>
-          <%= f.text_field :message, class: 'form-control', placeholder: '内容' %>
+          <%= f.text_area :message, class: 'form-control', placeholder: '内容' %>
         </div>
 
         <%= f.submit 'Review', class: 'btn btn-outline-info w-100 mt-3' %>
-
+      <% end %>
 
     </div>
   </div>

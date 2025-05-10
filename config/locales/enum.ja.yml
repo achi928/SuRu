@@ -5,9 +5,10 @@ ja:
         unspecified: 未設定
         female: 女性
         male: 男性
-    subject:
-      account: 再入会について
-      team: 退会について
-      error: 機能の不具合、エラーメッセージ
-      trouble: 攻撃的な発言
-      others: その他
+    contact:
+      subject:
+        account: 再入会について
+        team: 退会について
+        error: 機能の不具合、エラーメッセージ
+        trouble: 攻撃的な発言
+        others: その他

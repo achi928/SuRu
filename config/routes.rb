@@ -38,8 +38,8 @@ Rails.application.routes.draw do
     patch 'withdraw', to: 'members#withdraw'
 
     resources :contacts, only: [:new, :create]
-    get 'confirm', to 'contacts#confirm'
-    get 'complete', to 'contacts#complete'
+    get 'confirm', to: 'contacts#confirm'
+    get 'complete', to: 'contacts#complete'
   end
 
   devise_for :admin, skip: [:registrations, :password], controllers: {
