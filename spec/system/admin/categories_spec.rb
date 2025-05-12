@@ -72,7 +72,7 @@ RSpec.describe 'Categories', type: :system do
       it '編集に失敗する' do
         fill_in 'category[name]', with: ''
         click_button '変更を保存'
-        expect(page).to have_content 'カテゴリー名を入力してください'
+        expect(page).to have_content 'カテゴリーを入力してください'
       end
     end
 
