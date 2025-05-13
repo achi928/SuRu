@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     patch 'profile', to: 'members#update'
     get 'unsubscribe', to: 'members#unsubscribe'
     patch 'withdraw', to: 'members#withdraw'
+
+    resources :contacts, only: [:new, :create]
+    get 'confirm', to: 'contacts#confirm'
+    get 'complete', to: 'contacts#complete'
   end
 
   devise_for :admin, skip: [:registrations, :password], controllers: {

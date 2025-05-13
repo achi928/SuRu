@@ -48,7 +48,7 @@
 - デプロイ：AWS（EC2）
 
 ## AWS構成図
-![ SuRu AWS](app/assets/images/cloud.png)
+![ SuRu AWS](app/assets/images/cloud.webp)
 ​
 ## 使用素材
 - CanvaによるAI生成画像を使用
