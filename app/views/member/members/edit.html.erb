@@ -26,7 +26,7 @@
 
         <div class='form_group mb-3'>
           <%= f.label :birth_year, 'Birth Year', class: 'form-label' %><br>
-          <%= f.select :birth_year, options_for_select((1965..2014), @member.birth_year), class: 'form-control', prompt: '選択してください' %>
+          <%= f.select :birth_year, options_for_select((1965..2014)), class: 'form-control', prompt: '選択してください' %>
         </div>
 
         <div class='form_group mb-3'>
