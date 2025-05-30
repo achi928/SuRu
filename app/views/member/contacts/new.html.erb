@@ -3,7 +3,7 @@
     <div class='col-lg-6 col-md-6 col-sm-8'>
       <h1 class='text-center mb-4 border-bottom'>Contact Form</h1>
 
-      <%= form_with model: @contact do |f| %>
+      <%= form_with model: @contact, url: confirm_path, method: :get do |f| %>
 
         <div class='form_group mb-3'>
           <%= f.label :name, 'Full Name', class: 'form-label' %>
