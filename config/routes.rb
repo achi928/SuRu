@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
     resources :contacts, only: [:new, :create]
     get 'confirm', to: 'contacts#confirm'
+    get 'back', to: 'contacts#back'
     get 'complete', to: 'contacts#complete'
   end
 

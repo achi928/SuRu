@@ -5,9 +5,24 @@ class Member::ContactsController < ApplicationController
   end
 
   def create
+    @contact = Contact.new(contact_params)
+    if @contact.save
+      redirect_to complete_path
+    else
+      render :new
+    end
+  end
+
+  def back
+    @contact = Contact.new(contact_params)
+    render :new
   end
 
   def confirm
+    @contact = Contact.new(contact_params)
+    if @contact.invalid?
+      render :new
+    end
   end
 
   private

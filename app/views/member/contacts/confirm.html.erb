@@ -1,7 +1,51 @@
-お問い合わせ確認画面
+<div class='container mt-5'>
+  <div class='row justify-content-center'>
+    <div class='col-lg-6 col-md-6 col-sm-8'>
+      <h1 class='text-center mb-4 border-bottom'>Confirmation Page</h1>
 
-確認
+      <table class='table bg-white shadow-sm'>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td><%= @contact.name %></td>
+          </tr>
+          <tr>
+            <th>E-Mail</th>
+            <td><%= @contact.email %></td>
+          </tr>
+          <tr>
+            <th>Subject</th>
+            <td><%= @contact.subject_i18n %></td>
+          </tr>
+          <tr>
+            <th>Message</th>
+            <td><%= @contact.message %></td>
+          </tr>
+        </tbody>
+      </table>
 
-hiddenを使う
+      <div class='d-flex justify-content-center mt-4'>
+        <%= form_with model: @contact do |f| %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :subject %>
+          <%= f.hidden_field :message %>
+          <div>
+            <%= f.submit 'Submit', class: 'btn btn-outline-success mr-5 btn-lg' %>
+          </div>
+        <% end %>
 
-戻る、送る
+        <%= form_with model: @contact, url: back_path, method: :get do |f| %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :subject %>
+          <%= f.hidden_field :message %>
+          <div>
+            <%= f.submit 'Back', class: 'btn btn-outline-info btn-lg' %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
